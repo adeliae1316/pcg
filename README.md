@@ -1,4 +1,6 @@
 # pcg
+https://adeliae1316.github.io/pcg-site/
+
 ## Purpose
 - practice html5, js and css.
 - want to create easy way to throw coins for pcg.
