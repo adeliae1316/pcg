@@ -1,10 +1,16 @@
+html {
+  touch-action: manipulation;
+}
+
 body {
   width: 100vw;
   text-align: center;
 }
 
 h1 {
-
+margin: 3vw;
+width: 95vw;
+font-size: 12vw;
 }
 
 span#count {
@@ -13,7 +19,7 @@ span#count {
 
 ul {
   margin: auto;
-  width: 90vw;
+  width: 95vw;
   text-align: center;
   display: table;
 }
