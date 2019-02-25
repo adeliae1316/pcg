@@ -1,0 +1,32 @@
+body {
+  width: 100vw;
+  text-align: center;
+}
+
+h1 {
+
+}
+
+span#count {
+
+}
+
+ul {
+  margin: auto;
+  width: 90vw;
+  text-align: center;
+  display: table;
+}
+li {
+  width: 20vw;
+  display: table-cell;
+}
+button {
+  width: 16vw;
+}
+
+div#screen {
+  margin: auto;
+  width: 100vw;
+  font-size: 16vw;
+}
