@@ -1,21 +1,30 @@
-window.addEventListener("load", function() {
-  let prev = 0, times = 0, count_num = 1;
+window.addEventListener("DOMContentLoaded", function() {
+  let prev = 0,
+    times = 0,
+    count_num = 1;
   let count_area = document.getElementById("count");
   let coins_screen = document.getElementById("coins-screen");
-  count_area.addEventListener("click", function(){
+
+
+  let elems = document.querySelectorAll('.modal');
+  let instances = M.Modal.init(elems);
+
+  console.log(instances);
+
+  count_area.addEventListener("click", function() {
     count_num = 0;
     count_area.innerText = count_num;
     coins_screen.innerText = "";
-  }, false)
+  }, false);
   document.body.addEventListener("click", function(event) {
     // if (event.target.tagName == "BUTTON") {
     // console.log(event.target.className);
-    if(event.target.className.indexOf("times") != -1){
+    if (event.target.className.indexOf("times") != -1) {
       times = event.target.value;
-      if(times == prev){
+      if (times == prev) {
         count_num++;
         count_area.innerText = count_num;
-      }else{
+      } else {
         count_num = 1;
         count_area.innerText = count_num;
       }
@@ -29,7 +38,8 @@ window.addEventListener("load", function() {
         }
         coins_screen.innerText = out_str;
       }
+      prev = times;
     }
-    prev = times;
-  }, false)
-}, false)
+  }, false);
+
+}, false);

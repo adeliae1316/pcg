@@ -8,15 +8,15 @@ body {
 }
 
 h1 {
-margin: 5vw;
-width: 90vw;
-font-size: 10vw;
+  margin: 3vw 5vw 3vw;
+  width: 90vw;
+  font-size: 10vw;
 }
 
 h2 {
-margin: 5vw;
-width: 90vw;
-font-size: 8vw;
+  margin: 3vw 5vw 3vw;
+  width: 90vw;
+  font-size: 8vw;
 }
 
 ul {
@@ -27,24 +27,19 @@ li {
   display: table-cell;
 }
 
-span#count {
-}
+span#count {}
 
 ul#coin-times {
   width: 92vw;
-  margin: 0vw 4vw;
+  margin: 1vw 4vw;
 }
 
 ul.status-ul {
   width: 92vw;
-  /* margin: 2vw 4vw; */
-  /* text-align: center; */
+  margin: 0vw 2vw;
 }
 
-li.status-li {
-  /* margin: 0vw; */
-  /* padding: 0vw; */
-}
+li.status-li {}
 
 div.card {
   margin: 4vw;
@@ -54,13 +49,11 @@ div.card {
 div.poison-burn {
   width: 40vw;
   height: 28vw;
-  margin-bottom: 0vw;
 }
 
 div.status-etc {
   width: 24vw;
   height: 24vw;
-  margin-top: 0vw;
 }
 
 img.status-img {
@@ -73,8 +66,16 @@ button.times {
 }
 
 div#coins-screen {
-  margin: 5vw 5vw 0vw;
+  margin: 2vw 5vw 2vw;
   width: 90vw;
-  height: 14vw;
+  height: 12vw;
   font-size: 14vw;
+}
+
+.disable-gray {
+  -webkit-filter: grayscale(100%);
+  -moz-filter: grayscale(100%);
+  -ms-filter: grayscale(100%);
+  -o-filter: grayscale(100%);
+  filter: grayscale(100%);
 }

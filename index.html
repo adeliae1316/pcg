@@ -20,6 +20,38 @@
   <article>
     <h1>POKECA FIELD</h1>
     <section>
+      <h2>Status</h2>
+      <ul class="status-ul">
+        <li class="status-li">
+          <div data-target="modal-poison" class="card poison-burn modal-trigger">
+            <img src="./img/medical_doku.png" class="status-img disable-gray">
+          </div>
+        </li>
+        <li class="status-li">
+          <div data-target="modal-burn" class="card poison-burn modal-trigger">
+            <img src="./img/honoo_hi_fire.png" class="status-img disable-gray">
+          </div>
+        </li>
+      </ul>
+      <ul class="status-ul">
+        <li class="status-li">
+          <div data-target="modal-sleep" class="card status-etc modal-trigger">
+            <img src="./img/shirokuma_sleep.png" class="status-img disable-gray">
+          </div>
+        </li>
+        <li class="status-li">
+          <div data-target="modal-paralysis" class="card status-etc modal-trigger">
+            <img src="./img/kanden_gaikotsu.png" class="status-img disable-gray">
+          </div>
+        </li>
+        <li class="status-li">
+          <div data-target="modal-confusion" class="card status-etc modal-trigger">
+            <img src="./img/sick_noiroze_woman.png" class="status-img disable-gray">
+          </div>
+        </li>
+      </ul>
+    </section>
+    <section>
       <h2>Coins: <span id="count">0</span></h2>
       <ul id="coin-times">
         <li><button type="button" value="1" class="waves-effect waves-light btn-large times">1</button></li>
@@ -30,38 +62,69 @@
       </ul>
       <div id="coins-screen" class="material-icons"></div>
     </section>
-    <section>
-      <h2>Status</h2>
-      <ul class="status-ul">
-        <li class="status-li">
-          <div class="card poison-burn">
-            <img src="./img/medical_doku.png" class="status-img">
-          </div>
-        </li>
-        <li class="status-li">
-          <div class="card poison-burn">
-            <img src="./img/honoo_hi_fire.png" class="status-img">
-          </div>
-        </li>
-      </ul>
-      <ul class="status-ul">
-        <li class="status-li">
-          <div class="card status-etc">
-            <img src="./img/shirokuma_sleep.png" class="status-img">
-          </div>
-        </li>
-        <li class="status-li">
-          <div class="card status-etc">
-            <img src="./img/kanden_gaikotsu.png" class="status-img">
-          </div>
-        </li>
-        <li class="status-li">
-          <div class="card status-etc">
-            <img src="./img/sick_noiroze_woman.png" class="status-img">
-          </div>
-        </li>
-      </ul>
-    </section>
+
+    <!-- modal for status -->
+
+    <!-- Poison -->
+    <div id="modal-poison" class="modal">
+      <div class="modal-content">
+        <h4>どく</h4>
+        <p>どく状態にしますか？</p>
+      </div>
+      <div class="modal-footer">
+        <a class="modal-close waves-effect waves-green btn-flat">Cancel</a>
+        <a class="modal-close waves-effect waves-green btn-flat">OK</a>
+      </div>
+    </div>
+
+    <!-- Burn -->
+    <div id="modal-burn" class="modal">
+      <div class="modal-content">
+        <h4>やけど</h4>
+        <p>やけど状態にしますか？</p>
+      </div>
+      <div class="modal-footer">
+        <a class="modal-close waves-effect waves-green btn-flat">Cancel</a>
+        <a class="modal-close waves-effect waves-green btn-flat">OK</a>
+      </div>
+    </div>
+
+    <!-- Sleep -->
+    <div id="modal-sleep" class="modal">
+      <div class="modal-content">
+        <h4>ねむり</h4>
+        <p>ねむり状態にしますか？</p>
+      </div>
+      <div class="modal-footer">
+        <a class="modal-close waves-effect waves-green btn-flat">Cancel</a>
+        <a class="modal-close waves-effect waves-green btn-flat">OK</a>
+      </div>
+    </div>
+
+    <!-- Paralysis -->
+    <div id="modal-paralysis" class="modal">
+      <div class="modal-content">
+        <h4>マヒ</h4>
+        <p>マヒ状態にしますか？</p>
+      </div>
+      <div class="modal-footer">
+        <a class="modal-close waves-effect waves-green btn-flat">Cancel</a>
+        <a class="modal-close waves-effect waves-green btn-flat">OK</a>
+      </div>
+    </div>
+
+    <!-- Confusion -->
+    <div id="modal-confusion" class="modal">
+      <div class="modal-content">
+        <h4>こんらん</h4>
+        <p>こんらん状態にしますか？</p>
+      </div>
+      <div class="modal-footer">
+        <a class="modal-close waves-effect waves-green btn-flat">Cancel</a>
+        <a class="modal-close waves-effect waves-green btn-flat">OK</a>
+      </div>
+    </div>
+
   </article>
   <footer></footer>
 </body>
