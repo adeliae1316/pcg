@@ -34,9 +34,18 @@ window.addEventListener("DOMContentLoaded", function() {
   let elems = document.querySelectorAll('.modal');
   let instances = M.Modal.init(elems);
 
-  for (let i = 0; i < status_array.length; i++) {
+  // console.log(elems);
+  let conflict = false;
+  let before_value = 0;
+
+  for (let i = 0; i < 5; i++) {
     status(elements_array[i], status_array[i]);
   }
+
+
+  if_dclick(count_area, function() {
+    console.log("testtest");
+  });
 
   count_area.addEventListener("click", function() {
     // Init count_area and coins_screen
@@ -46,32 +55,51 @@ window.addEventListener("DOMContentLoaded", function() {
   }, false);
 
   document.body.addEventListener("click", function(event) {
-    // console.log(event.target.id);
     throw_coins(event);
   }, false);
 
   function status(element, status_element) {
-    let status_num = get_status_num(element);
     element.addEventListener("click", function() {
-      if (!status_element.is_status) {
-        instances[status_num].open();
+      if ((!status_element.is_status && (status_sleep.is_status || status_paralysis.is_status || status_confusion.is_status)) && !(status_element == status_poison || status_element == status_burn)) {
+        conflict = true;
+        let status_num = get_status_num(element);
+        instances[status_num + 3].open();
         document.body.addEventListener("click", function(event) {
           if (event.target.dataset["value"] == ok_array[status_num]) {
+            change_status(status_array[before_value]);
             change_status(status_array[status_num]);
+            before_value = status_num;
+            console.log(status_sleep.is_status + " : " + status_paralysis.is_status + " : " + status_confusion.is_status);
+          }
+        }, false);
+      } else if ((!status_element.is_status && (status_element == status_poison || status_element == status_burn)) || (!status_element.is_status && !conflict)) {
+        let status_num = get_status_num(element);
+        instances[status_num].open();
+        document.body.addEventListener("click", function(event) {
+          if ((!status_element.is_status && (status_element == status_poison || status_element == status_burn)) || (!status_element.is_status && !conflict)) {
+            if (event.target.dataset["value"] == ok_array[status_num]) {
+              change_status(status_array[status_num]);
+              if (if_interference(status_element)) {
+                before_value = status_num;
+              }
+            }
           }
         }, false);
       }
     }, false);
   }
 
+  //  && status_element.element.className.indexOf("disable-gray") != -1
   function change_status(status_element) {
-    if (status_element.element.className.indexOf(" disable-gray") != -1) {
-      let temp = status_element.element.className.replace(" disable-gray", "");
+    if (!status_element.is_status) {
+      let temp = status_element.element.className.replace("disable-gray", "");
       status_element.element.className = temp;
       status_element.is_status = true;
-    } else {
-      status_element.element.className += " disable-gray";
+      // console.log(status_element.element.id + " : " + status_element.element.className);
+    } else if (status_element.is_status) {
+      status_element.element.className += "disable-gray";
       status_element.is_status = false;
+      // console.log(status_element.element.id + " : " + status_element.element.className);
     }
   }
 
@@ -111,6 +139,34 @@ window.addEventListener("DOMContentLoaded", function() {
         return 3;
       case "confusion":
         return 4;
+    }
+  }
+
+  function if_dclick(element, func) {
+    var clicked = false;
+    element.addEventListener("click", function() {
+      if (clicked) {
+        // write your function when double click
+        func();
+        clicked = false;
+        return;
+      }
+      clicked = true;
+      setTimeout(function() {
+        if (clicked) {
+          // write your function when double click
+          // console.log("Single");
+        }
+        clicked = false;
+      }, 300);
+    }, false);
+  }
+
+  function if_interference(status_element) {
+    if (status_element == status_sleep || status_element == status_paralysis || status_element == status_confusion) {
+      return true;
+    } else {
+      return false;
     }
   }
 
