@@ -1,7 +1,7 @@
 window.addEventListener("load", function() {
   let prev = 0, times = 0, count_num = 1;
   let count_area = document.getElementById("count");
-  let coins_screen = document.getElementById("coins_screen");
+  let coins_screen = document.getElementById("coins-screen");
   count_area.addEventListener("click", function(){
     count_num = 0;
     count_area.innerText = count_num;
