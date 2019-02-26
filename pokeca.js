@@ -5,7 +5,7 @@ window.addEventListener("DOMContentLoaded", function() {
   let count_area = document.getElementById("count");
   let coins_screen = document.getElementById("coins-screen");
 
-  // Get Ids of Status
+  // Get Id of Status
   let poison = document.getElementById("poison");
   let burn = document.getElementById("burn");
   let sleep = document.getElementById("sleep");
@@ -19,26 +19,31 @@ window.addEventListener("DOMContentLoaded", function() {
   document.body.addEventListener("click", function(event) {
     // console.log(event.target);
 
-    switch(event.target.id){
+    switch (event.target.id) {
       case "ok-poison":
-      change_grayscale(poison);
-      break;
+        change_grayscale(poison);
+        break;
       case "ok-burn":
-      change_grayscale(burn);
-      break;
+        change_grayscale(burn);
+        break;
       case "ok-sleep":
-      change_grayscale(sleep);
-      break;
+        change_grayscale(sleep);
+        break;
       case "ok-paralysis":
-      change_grayscale(paralysis);
-      break;
+        change_grayscale(paralysis);
+        break;
       case "ok-confusion":
-      change_grayscale(confusion);
-      break;
+        change_grayscale(confusion);
+        break;
     }
 
+    throw_coins(event);
+
+  }, false);
+
+  function throw_coins(event){
     // Init count_area and coins_screen
-    if(event.target == count_area){
+    if (event.target == count_area) {
       count_num = 0;
       count_area.innerText = count_num;
       coins_screen.innerText = "";
@@ -65,16 +70,14 @@ window.addEventListener("DOMContentLoaded", function() {
       }
       prev = times;
     }
-  }, false);
+  }
 
-  function change_grayscale(element){
-    if(element.className.indexOf("disable-gray") == -1){
+  function change_grayscale(element) {
+    if (element.className.indexOf("disable-gray") == -1) {
       element.className += " disable-gray";
-      console.log("no");
     } else {
       let temp = element.className.replace("disable-gray", "");
       element.className = temp;
-      console.log("yes");
     }
   }
 
