@@ -73,7 +73,8 @@ button.times {
 }
 
 div#coins-screen {
-  margin: 3vw 5vw;
+  margin: 5vw 5vw 0vw;
   width: 90vw;
+  height: 14vw;
   font-size: 14vw;
 }
