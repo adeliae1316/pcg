@@ -1,25 +1,30 @@
 html {
+  font-family: 'Ubuntu', sans-serif;
   touch-action: manipulation;
 }
 
 body {
-  width: 100vw;
-  text-align: center;
+  width: 100%;
 }
 
 h1 {
-margin: 3vw;
-width: 95vw;
-font-size: 12vw;
+margin: 5vw;
+width: 100%;
+font-size: 10vw;
+}
+
+h2 {
+margin: 5vw;
+width: 100%;
+font-size: 8vw;
 }
 
 span#count {
-
 }
 
 ul {
   margin: auto;
-  width: 95vw;
+  width: 95%;
   text-align: center;
   display: table;
 }
@@ -31,8 +36,9 @@ button {
   width: 16vw;
 }
 
-div#screen {
-  margin: auto;
-  width: 100vw;
-  font-size: 16vw;
+div#coins_screen {
+  margin: 5%;
+  width: 90%;
+  font-size: 14vw;
+  text-align: center;
 }
