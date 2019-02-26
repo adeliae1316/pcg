@@ -5,6 +5,12 @@ window.addEventListener("DOMContentLoaded", function() {
   let count_area = document.getElementById("count");
   let coins_screen = document.getElementById("coins-screen");
 
+  // Constructor
+  let Status = function(element) {
+    this.element = element;
+    this.is_status = false;
+  }
+
   // Get Id of Status
   let poison = document.getElementById("poison");
   let burn = document.getElementById("burn");
@@ -12,36 +18,55 @@ window.addEventListener("DOMContentLoaded", function() {
   let paralysis = document.getElementById("paralysis");
   let confusion = document.getElementById("confusion");
 
+  let elements_array = [poison, burn, sleep, paralysis, confusion];
+
+  // Instance
+  let status_poison = new Status(poison);
+  let status_burn = new Status(burn);
+  let status_sleep = new Status(sleep);
+  let status_paralysis = new Status(paralysis);
+  let status_confusion = new Status(confusion);
+
+  let status_array = [status_poison, status_burn, status_sleep, status_paralysis, status_confusion];
+  let ok_array = ["ok-poison", "ok-burn", "ok-sleep", "ok-paralysis", "ok-confusion"];
+
   // Init Modals of Materialize
   let elems = document.querySelectorAll('.modal');
   let instances = M.Modal.init(elems);
 
+  for(let i=0;i<status_array.length;i++){
+    status(elements_array[i], status_array[i]);
+  }
+
   document.body.addEventListener("click", function(event) {
-    // console.log(event.target);
-
-    switch (event.target.id) {
-      case "ok-poison":
-        change_grayscale(poison);
-        break;
-      case "ok-burn":
-        change_grayscale(burn);
-        break;
-      case "ok-sleep":
-        change_grayscale(sleep);
-        break;
-      case "ok-paralysis":
-        change_grayscale(paralysis);
-        break;
-      case "ok-confusion":
-        change_grayscale(confusion);
-        break;
-    }
-
     throw_coins(event);
-
   }, false);
 
-  function throw_coins(event){
+  function status(element, status_element){
+    element.addEventListener("click", function() {
+      if (!status_element.is_status) {
+        instances[get_status_num(element)].open();
+        document.body.addEventListener("click", function(event) {
+          if (event.target.dataset["value"] == ok_array[get_status_num(element)]) {
+            change_status(status_poison);
+          }
+        }, false);
+      }
+    }, false);
+  }
+
+  function change_status(status_element) {
+    if (status_element.element.className.indexOf(" disable-gray") != -1) {
+      let temp = status_element.element.className.replace(" disable-gray", "");
+      status_element.element.className = temp;
+      status_element.is_status = true;
+    } else {
+      status_element.element.className += " disable-gray";
+      status_element.is_status = false;
+    }
+  }
+
+  function throw_coins(event) {
     // Init count_area and coins_screen
     if (event.target == count_area) {
       count_num = 0;
@@ -72,13 +97,22 @@ window.addEventListener("DOMContentLoaded", function() {
     }
   }
 
-  function change_grayscale(element) {
-    if (element.className.indexOf("disable-gray") == -1) {
-      element.className += " disable-gray";
-    } else {
-      let temp = element.className.replace("disable-gray", "");
-      element.className = temp;
+  function get_status_num(element) {
+    switch (element.id) {
+      case "poison":
+        return 0;
+      case "burn":
+        return 1;
+      case "sleep":
+        return 2;
+      case "paralysis":
+        return 3;
+      case "confusion":
+        return 4;
     }
   }
+
+  // event.target.className;
+  // status(status_poison, elems[0].lastElementChild.lastElementChild.dataset["value"]);
 
 }, false);
