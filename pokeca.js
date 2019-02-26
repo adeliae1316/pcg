@@ -34,21 +34,23 @@ window.addEventListener("DOMContentLoaded", function() {
   let elems = document.querySelectorAll('.modal');
   let instances = M.Modal.init(elems);
 
-  for(let i=0;i<status_array.length;i++){
+  for (let i = 0; i < status_array.length; i++) {
     status(elements_array[i], status_array[i]);
   }
 
-  document.body.addEventListener("click", function(event) {
+  count_area.addEventListener("click", function() {
     // Init count_area and coins_screen
-    if (event.target == count_area) {
-      count_num = 0;
-      count_area.innerText = count_num;
-      coins_screen.innerText = "";
-    }
+    count_num = 0;
+    count_area.innerText = count_num;
+    coins_screen.innerText = "";
+  }, false);
+
+  document.body.addEventListener("click", function(event) {
+    // console.log(event.target.id);
     throw_coins(event);
   }, false);
 
-  function status(element, status_element){
+  function status(element, status_element) {
     let status_num = get_status_num(element);
     element.addEventListener("click", function() {
       if (!status_element.is_status) {
@@ -74,7 +76,6 @@ window.addEventListener("DOMContentLoaded", function() {
   }
 
   function throw_coins(event) {
-
     if (event.target.className.indexOf("times") != -1) {
       times = event.target.value;
       if (times == prev) {
