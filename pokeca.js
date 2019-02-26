@@ -39,16 +39,23 @@ window.addEventListener("DOMContentLoaded", function() {
   }
 
   document.body.addEventListener("click", function(event) {
+    // Init count_area and coins_screen
+    if (event.target == count_area) {
+      count_num = 0;
+      count_area.innerText = count_num;
+      coins_screen.innerText = "";
+    }
     throw_coins(event);
   }, false);
 
   function status(element, status_element){
+    let status_num = get_status_num(element);
     element.addEventListener("click", function() {
       if (!status_element.is_status) {
-        instances[get_status_num(element)].open();
+        instances[status_num].open();
         document.body.addEventListener("click", function(event) {
-          if (event.target.dataset["value"] == ok_array[get_status_num(element)]) {
-            change_status(status_poison);
+          if (event.target.dataset["value"] == ok_array[status_num]) {
+            change_status(status_array[status_num]);
           }
         }, false);
       }
@@ -67,12 +74,6 @@ window.addEventListener("DOMContentLoaded", function() {
   }
 
   function throw_coins(event) {
-    // Init count_area and coins_screen
-    if (event.target == count_area) {
-      count_num = 0;
-      count_area.innerText = count_num;
-      coins_screen.innerText = "";
-    }
 
     if (event.target.className.indexOf("times") != -1) {
       times = event.target.value;
