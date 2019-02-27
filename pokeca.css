@@ -87,6 +87,10 @@ li.field {
   font-size: 8vw;
 }
 
+div.disable-gray {
+  background-color: rgb(200, 200, 200) !important;
+}
+
 div#poison {
   background-color: rgb(255, 200, 255);
 }
@@ -103,10 +107,10 @@ div#confusion {
   background-color: rgb(255, 255, 200);
 }
 
-.disable-gray {
-  filter: grayscale(100%);
-  /* -webkit-filter: grayscale(100%);
+img.disable-gray {
+  -webkit-filter: grayscale(100%);
   -moz-filter: grayscale(100%);
   -ms-filter: grayscale(100%);
-  -o-filter: grayscale(100%); */
+  -o-filter: grayscale(100%);
+  filter: grayscale(100%);
 }

@@ -138,12 +138,17 @@ window.addEventListener("DOMContentLoaded", function() {
   }
 
   function changeStatus(status_element) {
+    const imagetag = status_element.element.lastElementChild;
+    console.log(imagetag.className);
     if (!status_element.is_status && status_element.element.className.indexOf("disable-gray") != -1) {
       let temp = status_element.element.className.replace("disable-gray", "");
       status_element.element.className = temp;
+      temp = status_element.element.lastElementChild.className.replace("disable-gray", "");
+      status_element.element.lastElementChild.className = temp;
       status_element.is_status = true;
     } else if (status_element.is_status) {
       status_element.element.className += "disable-gray";
+      status_element.element.lastElementChild.className += "disable-gray";
       status_element.is_status = false;
     }
   }
