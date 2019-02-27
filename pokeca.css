@@ -104,7 +104,10 @@ div#confusion {
 }
 
 .disable-gray {
+<<<<<<< HEAD
   filter: grayscale(100%);
+=======
+>>>>>>> a9f07f43cb1cda51fc406a980750828cc2947d91
   /* -webkit-filter: grayscale(100%);
   -moz-filter: grayscale(100%);
   -ms-filter: grayscale(100%);
