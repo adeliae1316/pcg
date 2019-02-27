@@ -41,7 +41,7 @@ window.addEventListener("DOMContentLoaded", function() {
 
   let elems_times = document.querySelectorAll(".times");
   for (let i = 0; i < elems_times.length; i++) {
-    throw_coins(elems_times[i]);
+    throwCoins(elems_times[i]);
   }
 
   for (let i = 0; i < 5; i++) {
@@ -69,24 +69,24 @@ window.addEventListener("DOMContentLoaded", function() {
 
   function clickOK(modal_element) {
     modal_element.addEventListener("click", function() {
-      if (modal_element.lastElementChild.lastElementChild.dataset["value"] == ok_array[get_modal_num(modal_element)]) {
+      if (modal_element.lastElementChild.lastElementChild.dataset["value"] == ok_array[getModalNum(modal_element)]) {
         switch (modal_element.id) {
           case "modal-poison":
           case "modal-burn":
-            change_status(status_array[status_num]);
+            changeStatus(status_array[status_num]);
             break;
           case "modal-sleep":
           case "modal-paralysis":
           case "modal-confusion":
-            change_status(status_array[status_num]);
+            changeStatus(status_array[status_num]);
             before_value = status_num;
             break;
           case "modal-paralysis-interference":
           case "modal-sleep-interference":
           case "modal-confusion-interference":
             console.log("in-if_clickOK: " + modal_element.id);
-            change_status(status_array[before_value]);
-            change_status(status_array[status_num]);
+            changeStatus(status_array[before_value]);
+            changeStatus(status_array[status_num]);
             before_value = status_num;
             break;
         }
@@ -99,16 +99,16 @@ window.addEventListener("DOMContentLoaded", function() {
       const conflict_status = (!status_element.is_status && (status_sleep.is_status || status_paralysis.is_status || status_confusion.is_status)) && !(status_element == status_poison || status_element == status_burn);
       const non_conflict_status = (!status_element.is_status && (status_element == status_poison || status_element == status_burn)) || (!status_element.is_status);
       if (conflict_status) {
-        status_num = get_status_num(element);
+        status_num = getStatusNum(element);
         instances[status_num + 3].open();
       } else if (non_conflict_status) {
-        status_num = get_status_num(element);
+        status_num = getStatusNum(element);
         instances[status_num].open();
       }
     }, false);
   }
 
-  function change_status(status_element) {
+  function changeStatus(status_element) {
     if (!status_element.is_status && status_element.element.className.indexOf("disable-gray") != -1) {
       let temp = status_element.element.className.replace("disable-gray", "");
       status_element.element.className = temp;
@@ -119,7 +119,7 @@ window.addEventListener("DOMContentLoaded", function() {
     }
   }
 
-  function throw_coins(element) {
+  function throwCoins(element) {
     element.addEventListener("click", function() {
       times = element.value;
       if (times == prev) {
@@ -143,7 +143,7 @@ window.addEventListener("DOMContentLoaded", function() {
     }, false);
   }
 
-  function get_modal_num(element) {
+  function getModalNum(element) {
     switch (element.id) {
       case "modal-poison":
         return 0;
@@ -161,7 +161,7 @@ window.addEventListener("DOMContentLoaded", function() {
     }
   }
 
-  function get_status_num(element) {
+  function getStatusNum(element) {
     switch (element.id) {
       case "poison":
         return 0;
