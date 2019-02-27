@@ -7,7 +7,7 @@ https://adeliae1316.github.io/pcg-site/
 
 ## Materialize
 - This site uses CSS Framework: [Materialize](https://materializecss.com/).
-  - Github is [here](https://github.com/Dogfalo/materialize).
+  - GitHub is [here](https://github.com/Dogfalo/materialize).
 
 ```
 copyright 2014-2019 Materialize, All rights reserved.

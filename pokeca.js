@@ -34,78 +34,94 @@ window.addEventListener("DOMContentLoaded", function() {
   let elems = document.querySelectorAll('.modal');
   let instances = M.Modal.init(elems);
 
-  // console.log(elems);
-  let conflict = false;
-  let before_value = 0;
+  let status_num = 0,
+    before_value = 0;
 
-  for (let i = 0; i < 5; i++) {
-    status(elements_array[i], status_array[i]);
+  clearCountArea();
+
+  let elems_times = document.querySelectorAll(".times");
+  for (let i = 0; i < elems_times.length; i++) {
+    throw_coins(elems_times[i]);
   }
 
+  for (let i = 0; i < 5; i++) {
+    clickStatus(elements_array[i], status_array[i]);
+  }
 
-  if_dclick(count_area, function() {
-    console.log("testtest");
+  for (let i = 0; i < elems.length; i++) {
+    clickOK(elems[i]);
+  }
+
+  dclick(count_area, function() {
+    console.log("double-click");
+  }, function() {
+    console.log("single-click");
   });
 
-  count_area.addEventListener("click", function() {
+  function clearCountArea() {
     // Init count_area and coins_screen
-    count_num = 0;
-    count_area.innerText = count_num;
-    coins_screen.innerText = "";
-  }, false);
+    count_area.addEventListener("click", function() {
+      count_num = 0;
+      count_area.innerText = count_num;
+      coins_screen.innerText = "";
+    }, false);
+  }
 
-  document.body.addEventListener("click", function(event) {
-    throw_coins(event);
-  }, false);
-
-  function status(element, status_element) {
-    element.addEventListener("click", function() {
-      if ((!status_element.is_status && (status_sleep.is_status || status_paralysis.is_status || status_confusion.is_status)) && !(status_element == status_poison || status_element == status_burn)) {
-        conflict = true;
-        let status_num = get_status_num(element);
-        instances[status_num + 3].open();
-        document.body.addEventListener("click", function(event) {
-          if (event.target.dataset["value"] == ok_array[status_num]) {
+  function clickOK(modal_element) {
+    modal_element.addEventListener("click", function() {
+      if (modal_element.lastElementChild.lastElementChild.dataset["value"] == ok_array[get_modal_num(modal_element)]) {
+        switch (modal_element.id) {
+          case "modal-poison":
+          case "modal-burn":
+            change_status(status_array[status_num]);
+            break;
+          case "modal-sleep":
+          case "modal-paralysis":
+          case "modal-confusion":
+            change_status(status_array[status_num]);
+            before_value = status_num;
+            break;
+          case "modal-paralysis-interference":
+          case "modal-sleep-interference":
+          case "modal-confusion-interference":
+            console.log("in-if_clickOK: " + modal_element.id);
             change_status(status_array[before_value]);
             change_status(status_array[status_num]);
             before_value = status_num;
-            console.log(status_sleep.is_status + " : " + status_paralysis.is_status + " : " + status_confusion.is_status);
-          }
-        }, false);
-      } else if ((!status_element.is_status && (status_element == status_poison || status_element == status_burn)) || (!status_element.is_status && !conflict)) {
-        let status_num = get_status_num(element);
-        instances[status_num].open();
-        document.body.addEventListener("click", function(event) {
-          if ((!status_element.is_status && (status_element == status_poison || status_element == status_burn)) || (!status_element.is_status && !conflict)) {
-            if (event.target.dataset["value"] == ok_array[status_num]) {
-              change_status(status_array[status_num]);
-              if (if_interference(status_element)) {
-                before_value = status_num;
-              }
-            }
-          }
-        }, false);
+            break;
+        }
       }
     }, false);
   }
 
-  //  && status_element.element.className.indexOf("disable-gray") != -1
+  function clickStatus(element, status_element) {
+    element.addEventListener("click", function() {
+      const conflict_status = (!status_element.is_status && (status_sleep.is_status || status_paralysis.is_status || status_confusion.is_status)) && !(status_element == status_poison || status_element == status_burn);
+      const non_conflict_status = (!status_element.is_status && (status_element == status_poison || status_element == status_burn)) || (!status_element.is_status);
+      if (conflict_status) {
+        status_num = get_status_num(element);
+        instances[status_num + 3].open();
+      } else if (non_conflict_status) {
+        status_num = get_status_num(element);
+        instances[status_num].open();
+      }
+    }, false);
+  }
+
   function change_status(status_element) {
-    if (!status_element.is_status) {
+    if (!status_element.is_status && status_element.element.className.indexOf("disable-gray") != -1) {
       let temp = status_element.element.className.replace("disable-gray", "");
       status_element.element.className = temp;
       status_element.is_status = true;
-      // console.log(status_element.element.id + " : " + status_element.element.className);
     } else if (status_element.is_status) {
       status_element.element.className += "disable-gray";
       status_element.is_status = false;
-      // console.log(status_element.element.id + " : " + status_element.element.className);
     }
   }
 
-  function throw_coins(event) {
-    if (event.target.className.indexOf("times") != -1) {
-      times = event.target.value;
+  function throw_coins(element) {
+    element.addEventListener("click", function() {
+      times = element.value;
       if (times == prev) {
         count_num++;
         count_area.innerText = count_num;
@@ -124,6 +140,24 @@ window.addEventListener("DOMContentLoaded", function() {
         coins_screen.innerText = out_str;
       }
       prev = times;
+    }, false);
+  }
+
+  function get_modal_num(element) {
+    switch (element.id) {
+      case "modal-poison":
+        return 0;
+      case "modal-burn":
+        return 1;
+      case "modal-sleep":
+      case "modal-sleep-interference":
+        return 2;
+      case "modal-paralysis":
+      case "modal-paralysis-interference":
+        return 3;
+      case "modal-confusion":
+      case "modal-confusion-interference":
+        return 4;
     }
   }
 
@@ -142,12 +176,12 @@ window.addEventListener("DOMContentLoaded", function() {
     }
   }
 
-  function if_dclick(element, func) {
+  function dclick(element, dfunc, sfunc) {
     var clicked = false;
     element.addEventListener("click", function() {
       if (clicked) {
         // write your function when double click
-        func();
+        dfunc();
         clicked = false;
         return;
       }
@@ -155,22 +189,15 @@ window.addEventListener("DOMContentLoaded", function() {
       setTimeout(function() {
         if (clicked) {
           // write your function when double click
-          // console.log("Single");
+          sfunc();
         }
         clicked = false;
       }, 300);
     }, false);
   }
 
-  function if_interference(status_element) {
-    if (status_element == status_sleep || status_element == status_paralysis || status_element == status_confusion) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-
-  // event.target.className;
+  // document.body.addEventListener で イベントを受け取るときは
+  // if (event.target.className.indexOf("times") != -1) で処理を分ける
   // status(status_poison, elems[0].lastElementChild.lastElementChild.dataset["value"]);
 
 }, false);
