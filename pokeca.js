@@ -173,6 +173,7 @@ window.addEventListener("DOMContentLoaded", function() {
   }
 
   function judgeDoubleClick(clicked, element, dfunc, sfunc) {
+    // 呼び出す前にclicked = [false]を宣言して、addEventListener("click", function(){ judgeDoubleClick(clicked, element, ...) }, false);
     if (clicked[0]) {
       // write your function when double click
       dfunc();
