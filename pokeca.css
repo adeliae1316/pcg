@@ -45,6 +45,11 @@ ul.status-ul {
 
 li.status-li {}
 
+ul.style-ul {
+  list-style-type: square;
+  padding-left: 1em;
+}
+
 div.card {
   margin: 4vw;
   text-align: center;
