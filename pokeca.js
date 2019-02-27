@@ -52,14 +52,8 @@ window.addEventListener("DOMContentLoaded", function() {
     clickOK(elems[i]);
   }
 
-  dclick(count_area, function() {
-    console.log("double-click");
-  }, function() {
-    console.log("single-click");
-  });
-
+  // Init count_area and coins_screen
   function clearCountArea() {
-    // Init count_area and coins_screen
     count_area.addEventListener("click", function() {
       count_num = 0;
       count_area.innerText = count_num;
@@ -84,7 +78,6 @@ window.addEventListener("DOMContentLoaded", function() {
           case "modal-paralysis-interference":
           case "modal-sleep-interference":
           case "modal-confusion-interference":
-            console.log("in-if_clickOK: " + modal_element.id);
             changeStatus(status_array[before_value]);
             changeStatus(status_array[status_num]);
             before_value = status_num;
@@ -95,15 +88,24 @@ window.addEventListener("DOMContentLoaded", function() {
   }
 
   function clickStatus(element, status_element) {
+    let clicked = [false];
     element.addEventListener("click", function() {
-      const conflict_status = (!status_element.is_status && (status_sleep.is_status || status_paralysis.is_status || status_confusion.is_status)) && !(status_element == status_poison || status_element == status_burn);
-      const non_conflict_status = (!status_element.is_status && (status_element == status_poison || status_element == status_burn)) || (!status_element.is_status);
-      if (conflict_status) {
-        status_num = getStatusNum(element);
-        instances[status_num + 3].open();
-      } else if (non_conflict_status) {
-        status_num = getStatusNum(element);
-        instances[status_num].open();
+      if (!status_element.is_status) {
+        const conflict_status = (status_sleep.is_status || status_paralysis.is_status || status_confusion.is_status) && !(status_element == status_poison || status_element == status_burn);
+        const non_conflict_status = (status_element == status_poison || status_element == status_burn) || (!status_element.is_status);
+        if (conflict_status) {
+          status_num = getStatusNum(element);
+          instances[status_num + 3].open();
+        } else if (non_conflict_status) {
+          status_num = getStatusNum(element);
+          instances[status_num].open();
+        }
+      } else if (status_element.is_status) {
+        judgeDoubleClick(clicked, element, function() {
+          console.log("double-click");
+        }, function() {
+          console.log("single-click");
+        });
       }
     }, false);
   }
@@ -143,6 +145,23 @@ window.addEventListener("DOMContentLoaded", function() {
     }, false);
   }
 
+  function judgeDoubleClick(clicked, element, dfunc, sfunc) {
+    if (clicked[0]) {
+      // write your function when double click
+      dfunc();
+      clicked[0] = false;
+      return;
+    }
+    clicked[0] = true;
+    setTimeout(function() {
+      if (clicked[0]) {
+        // write your function when double click
+        sfunc();
+      }
+      clicked[0] = false;
+    }, 300);
+  }
+
   function getModalNum(element) {
     switch (element.id) {
       case "modal-poison":
@@ -176,28 +195,9 @@ window.addEventListener("DOMContentLoaded", function() {
     }
   }
 
-  function dclick(element, dfunc, sfunc) {
-    var clicked = false;
-    element.addEventListener("click", function() {
-      if (clicked) {
-        // write your function when double click
-        dfunc();
-        clicked = false;
-        return;
-      }
-      clicked = true;
-      setTimeout(function() {
-        if (clicked) {
-          // write your function when double click
-          sfunc();
-        }
-        clicked = false;
-      }, 300);
-    }, false);
-  }
-
-  // document.body.addEventListener で イベントを受け取るときは
-  // if (event.target.className.indexOf("times") != -1) で処理を分ける
-  // status(status_poison, elems[0].lastElementChild.lastElementChild.dataset["value"]);
 
 }, false);
+
+
+// document.body.addEventListener で イベントを受け取るときは if (event.target.className.indexOf("times") != -1) で処理を分ける
+// 参照渡ししたいときはオブジェクト(配列)を渡す
