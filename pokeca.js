@@ -34,12 +34,14 @@ window.addEventListener("DOMContentLoaded", function() {
   let elems = document.querySelectorAll('.modal');
   let instances = M.Modal.init(elems);
 
+  let elems_times = document.querySelectorAll(".times");
+  let elems_field = document.querySelectorAll(".field");
+
   let status_num = 0,
-    before_value = 0;
+    before_num = 0;
 
   clearCountArea();
 
-  let elems_times = document.querySelectorAll(".times");
   for (let i = 0; i < elems_times.length; i++) {
     throwCoins(elems_times[i]);
   }
@@ -51,6 +53,9 @@ window.addEventListener("DOMContentLoaded", function() {
   for (let i = 0; i < elems.length; i++) {
     clickOK(elems[i]);
   }
+
+
+  function fieldCards() {}
 
   // Init count_area and coins_screen
   function clearCountArea() {
@@ -73,14 +78,14 @@ window.addEventListener("DOMContentLoaded", function() {
           case "modal-paralysis":
           case "modal-confusion":
             changeStatus(status_array[status_num]);
-            before_value = status_num;
+            before_num = status_num;
             break;
           case "modal-paralysis-interference":
           case "modal-sleep-interference":
           case "modal-confusion-interference":
-            changeStatus(status_array[before_value]);
+            changeStatus(status_array[before_num]);
             changeStatus(status_array[status_num]);
-            before_value = status_num;
+            before_num = status_num;
             break;
         }
       }
@@ -103,11 +108,33 @@ window.addEventListener("DOMContentLoaded", function() {
       } else if (status_element.is_status) {
         judgeDoubleClick(clicked, element, function() {
           console.log("double-click");
+          setDamage(elems_field[0], getDamageOfStatus(element));
         }, function() {
           console.log("single-click");
+          instances[getStatusNum(element)+8].open();
         });
       }
     }, false);
+  }
+
+
+
+  function setDamage(element_field, damage) {
+    if (damage != null) {
+      let tmp = parseInt(element_field.innerText);
+      element_field.innerText = tmp + damage;
+    }
+  }
+
+  function getDamageOfStatus(status_element) {
+    switch (status_element.id) {
+      case "poison":
+        return 10;
+      case "burn":
+        return 20;
+      case "confusion":
+        return 30;
+    }
   }
 
   function changeStatus(status_element) {

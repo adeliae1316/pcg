@@ -20,31 +20,42 @@
   <article>
     <h1>POKECA FIELD</h1>
     <section>
+      <h2>Field</h2>
+      <ul id="field-ul" class="table-ul">
+        <li id="battle-field" class="field table-li">0</li>
+        <li id="bench1" class="field table-li">0</li>
+        <li id="bench2" class="field table-li">0</li>
+        <li id="bench3" class="field table-li">0</li>
+        <li id="bench4" class="field table-li">0</li>
+        <li id="bench5" class="field table-li">0</li>
+      </ul>
+    </section>
+    <section>
       <h2>Status</h2>
-      <ul class="status-ul">
-        <li class="status-li">
+      <ul class="status-ul table-ul">
+        <li class="status-li table-li">
           <div id="poison" data-target="modal-poison" class="card poison-burn disable-gray">
             <img src="./img/medical_doku.png" class="status-img" alt="どくの画像">
           </div>
         </li>
-        <li class="status-li">
+        <li class="status-li table-li">
           <div id="burn" data-target="modal-burn" class="card poison-burn disable-gray">
             <img src="./img/honoo_hi_fire.png" class="status-img" alt="やけどの画像">
           </div>
         </li>
       </ul>
-      <ul class="status-ul">
-        <li class="status-li">
+      <ul class="status-ul table-ul">
+        <li class="status-li table-li">
           <div id="sleep" data-target="modal-sleep" class="card status-etc disable-gray">
             <img src="./img/shirokuma_sleep.png" class="status-img" alt="ねむりの画像">
           </div>
         </li>
-        <li class="status-li">
+        <li class="status-li table-li">
           <div id="paralysis" data-target="modal-paralysis" class="card status-etc disable-gray">
             <img src="./img/kanden_gaikotsu.png" class="status-img" alt="マヒの画像">
           </div>
         </li>
-        <li class="status-li">
+        <li class="status-li table-li">
           <div id="confusion" data-target="modal-confusion" class="card status-etc disable-gray">
             <img src="./img/sick_noiroze_woman.png" class="status-img" alt="こんらんの画像">
           </div>
@@ -53,18 +64,17 @@
     </section>
     <section>
       <h2>Coins: <span id="count">0</span></h2>
-      <ul id="coin-times">
-        <li><button type="button" value="1" class="waves-effect waves-light btn-large times">1</button></li>
-        <li><button type="button" value="2" class="waves-effect waves-light btn-large times">2</button></li>
-        <li><button type="button" value="3" class="waves-effect waves-light btn-large times">3</button></li>
-        <li><button type="button" value="4" class="waves-effect waves-light btn-large times">4</button></li>
-        <li><button type="button" value="5" class="waves-effect waves-light btn-large times">5</button></li>
+      <ul id="coin-times" class="table-ul">
+        <li class="table-li"><button type="button" value="1" class="waves-effect waves-light btn-large times">1</button></li>
+        <li class="table-li"><button type="button" value="2" class="waves-effect waves-light btn-large times">2</button></li>
+        <li class="table-li"><button type="button" value="3" class="waves-effect waves-light btn-large times">3</button></li>
+        <li class="table-li"><button type="button" value="4" class="waves-effect waves-light btn-large times">4</button></li>
+        <li class="table-li"><button type="button" value="5" class="waves-effect waves-light btn-large times">5</button></li>
       </ul>
       <div id="coins-screen" class="material-icons"></div>
     </section>
 
     <!-- modal for status -->
-
     <!-- Poison -->
     <div id="modal-poison" class="modal">
       <div class="modal-content">
@@ -76,7 +86,6 @@
         <a data-value="ok-poison" class="modal-close waves-effect waves-green btn-flat">OK</a>
       </div>
     </div>
-
     <!-- Burn -->
     <div id="modal-burn" class="modal">
       <div class="modal-content">
@@ -88,7 +97,6 @@
         <a data-value="ok-burn" class="modal-close waves-effect waves-green btn-flat">OK</a>
       </div>
     </div>
-
     <!-- Sleep -->
     <div id="modal-sleep" class="modal">
       <div class="modal-content">
@@ -100,7 +108,6 @@
         <a data-value="ok-sleep" class="modal-close waves-effect waves-green btn-flat">OK</a>
       </div>
     </div>
-
     <!-- Paralysis -->
     <div id="modal-paralysis" class="modal">
       <div class="modal-content">
@@ -112,7 +119,6 @@
         <a data-value="ok-paralysis" class="modal-close waves-effect waves-green btn-flat">OK</a>
       </div>
     </div>
-
     <!-- Confusion -->
     <div id="modal-confusion" class="modal">
       <div class="modal-content">
@@ -126,7 +132,6 @@
     </div>
 
     <!-- modal for interference status -->
-
     <!-- sleep interference -->
     <div id="modal-sleep-interference" class="modal">
       <div class="modal-content">
@@ -141,7 +146,6 @@
         <a data-value="ok-sleep" class="modal-close waves-effect waves-green btn-flat">OK</a>
       </div>
     </div>
-
     <!-- paralysis interference -->
     <div id="modal-paralysis-interference" class="modal">
       <div class="modal-content">
@@ -156,7 +160,6 @@
         <a data-value="ok-paralysis" class="modal-close waves-effect waves-green btn-flat">OK</a>
       </div>
     </div>
-
     <!-- confusion interference -->
     <div id="modal-confusion-interference" class="modal">
       <div class="modal-content">
@@ -169,6 +172,188 @@
       <div class="modal-footer">
         <a class="modal-close waves-effect waves-green btn-flat">Cancel</a>
         <a data-value="ok-confusion" class="modal-close waves-effect waves-green btn-flat">OK</a>
+      </div>
+    </div>
+
+    <!-- modal for interference status -->
+    <!-- description poison -->
+    <div id="modal-poison-description" class="modal">
+      <div class="modal-content">
+        <h4>どく状態</h4>
+        <!-- <h5>説明</h5> -->
+        <p>
+          どくマーカーをカードにのせる。
+          ポケモンチェックのたびに「10」のダメカンを1個のせる。
+        </p>
+        <!-- <h5>行動</h5> -->
+        <p>
+          <table>
+            <tr>
+              <th>ワザ</th>
+              <td>使える</td>
+            </tr>
+            <tr>
+              <th>にげる</th>
+              <td>できる</td>
+            </tr>
+          </table>
+        </p>
+        <!-- <h5>回復</h5> -->
+        <p>
+          <ul>
+            <li>・ベンチに戻る、進化する。</li>
+            <li>・ポケモンのワザや特性、トレーナーズで、特殊状態を回復させる効果のあるものを使う。</li>
+          </ul>
+        </p>
+      </div>
+      <div class="modal-footer">
+        <!-- <a class="modal-close waves-effect waves-green btn-flat">Close</a> -->
+        <a data-value="recovery-poison" class="modal-close waves-effect waves-green btn-flat">回復</a>
+      </div>
+    </div>
+
+    <!-- description burn -->
+    <div id="modal-burn-description" class="modal">
+      <div class="modal-content">
+        <h4>やけど状態</h4>
+        <!-- <h5>説明</h5> -->
+        <p>
+          やけどマーカーをカードにのせる。
+          ポケモンチェックのたびに「10」のダメカンを2個のせる。
+          そのあと、コインを投げて、オモテならそのポケモンは「やけど」から回復する。
+        </p>
+        <!-- <h5>行動</h5> -->
+        <p>
+          <table>
+            <tr>
+              <th>ワザ</th>
+              <td>使える</td>
+            </tr>
+            <tr>
+              <th>にげる</th>
+              <td>できる</td>
+            </tr>
+          </table>
+        </p>
+        <!-- <h5>回復</h5> -->
+        <p>
+          <ul>
+            <li>・ベンチに戻る、進化する。</li>
+            <li>・ポケモンのワザや特性、トレーナーズで、特殊状態を回復させる効果のあるものを使う。</li>
+            <li>・ポケモンチェックごとにコインを投げてオモテなら回復する。</li>
+          </ul>
+        </p>
+      </div>
+      <div class="modal-footer">
+        <!-- <a class="modal-close waves-effect waves-green btn-flat">Close</a> -->
+        <a data-value="recovery-burn" class="modal-close waves-effect waves-green btn-flat">回復</a>
+      </div>
+    </div>
+
+    <!-- description sleep -->
+    <div id="modal-sleep-description" class="modal">
+      <div class="modal-content">
+        <h4>ねむり状態</h4>
+        <!-- <h5>説明</h5> -->
+        <p>
+          カードを横にする。※左右どちらでもかまわない。
+          「ねむり」のポケモンは、自分の番、ワザと「にげる」が使えなくなる。
+        </p>
+        <!-- <h5>行動</h5> -->
+        <p>
+          <table>
+            <tr>
+              <th>ワザ</th>
+              <td>使えない</td>
+            </tr>
+            <tr>
+              <th>にげる</th>
+              <td>できない</td>
+            </tr>
+          </table>
+        </p>
+        <!-- <h5>回復</h5> -->
+        <p>
+          <ul>
+            <li>・ベンチに戻る、進化する。</li>
+            <li>・ポケモンのワザや特性、トレーナーズで、特殊状態を回復させる効果のあるものを使う。</li>
+            <li>・ポケモンチェックごとにコインを投げてオモテなら回復する。</li>
+          </ul>
+        </p>
+      </div>
+      <div class="modal-footer">
+        <!-- <a class="modal-close waves-effect waves-green btn-flat">Close</a> -->
+        <a data-value="recovery-sleep" class="modal-close waves-effect waves-green btn-flat">回復</a>
+      </div>
+    </div>
+
+    <!-- description paralysis -->
+    <div id="modal-paralysis-description" class="modal">
+      <div class="modal-content">
+        <h4>マヒ状態</h4>
+        <!-- <h5>説明</h5> -->
+        <p>
+          カードを横にする。※左右どちらでもかまわない。
+          「マヒ」になったポケモンは、そのあとの自分の番、ワザと「にげる」が使えなくなる。
+        </p>
+        <!-- <h5>行動</h5> -->
+        <p>
+          <table>
+            <tr>
+              <th>ワザ</th>
+              <td>使えない</td>
+            </tr>
+            <tr>
+              <th>にげる</th>
+              <td>できない</td>
+            </tr>
+          </table>
+        </p>
+        <!-- <h5>回復</h5> -->
+        <p>
+          <ul>
+            <li>・ベンチに戻る、進化する。</li>
+            <li>・ポケモンのワザや特性、トレーナーズで、特殊状態を回復させる効果のあるものを使う。</li>
+            <li>・自分の番を1回すごしたあとのポケモンチェックで回復する。</li>
+          </ul>
+        </p>
+      </div>
+      <div class="modal-footer">
+        <!-- <a class="modal-close waves-effect waves-green btn-flat">Close</a> -->
+        <a data-value="recovery-paralysis" class="modal-close waves-effect waves-green btn-flat">回復</a>
+      </div>
+    </div>
+
+    <!-- description confusion -->
+    <div id="modal-confusion-description" class="modal">
+      <div class="modal-content">
+        <h4>こんらん状態</h4>
+        <!-- <h5>説明</h5> -->
+        <p>
+          カードを上下さかさまにする。
+          使うワザを決めたら、持ち主はコインを投げる。
+          オモテならそのワザを使えるが、ウラだとワザは失敗して、ワザを使ったポケモン自身に「10」のダメカンを3個のせる。
+        </p>
+        <!-- <h5>行動</h5> -->
+        <p>
+          <table>
+            <tr>
+              <th>にげる</th>
+              <td>できない</td>
+            </tr>
+          </table>
+        </p>
+        <!-- <h5>回復</h5> -->
+        <p>
+          <ul>
+            <li>・ベンチに戻る、進化する。</li>
+            <li>・ポケモンのワザや特性、トレーナーズで、特殊状態を回復させる効果のあるものを使う。</li>
+          </ul>
+        </p>
+      </div>
+      <div class="modal-footer">
+        <!-- <a class="modal-close waves-effect waves-green btn-flat">Close</a> -->
+        <a data-value="recovery-confusion" class="modal-close waves-effect waves-green btn-flat">回復</a>
       </div>
     </div>
 

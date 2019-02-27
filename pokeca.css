@@ -19,11 +19,15 @@ h2 {
   font-size: 8vw;
 }
 
-ul {
+p {
+  /* font-size: 1em; */
+}
+
+ul.table-ul {
   display: table;
 }
 
-li {
+li.table-li {
   display: table-cell;
 }
 
@@ -70,6 +74,33 @@ div#coins-screen {
   width: 90vw;
   height: 12vw;
   font-size: 14vw;
+}
+
+ul#field-ul {
+  margin: 2vw 5vw;
+  width: 90vw
+}
+
+li.field {
+  text-align: center;
+  width: 8vw;
+  font-size: 8vw;
+}
+
+div#poison {
+  background-color: rgb(255, 200, 255);
+}
+div#burn {
+  background-color: rgb(255, 200, 200);
+}
+div#sleep {
+  background-color: rgb(200, 240, 255);
+}
+div#paralysis {
+  background-color: rgb(200, 255, 170);
+}
+div#confusion {
+  background-color: rgb(255, 255, 200);
 }
 
 .disable-gray {
