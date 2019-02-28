@@ -142,7 +142,7 @@
         </p>
       </div>
       <div class="modal-footer">
-        <a class="modal-close waves-effect waves-green btn-flat">Cancel</a>
+        <!-- <a class="modal-close waves-effect waves-green btn-flat">Cancel</a> -->
         <a data-value="ok-sleep" class="modal-close waves-effect waves-green btn-flat">OK</a>
       </div>
     </div>
@@ -156,7 +156,7 @@
         </p>
       </div>
       <div class="modal-footer">
-        <a class="modal-close waves-effect waves-green btn-flat">Cancel</a>
+        <!-- <a class="modal-close waves-effect waves-green btn-flat">Cancel</a> -->
         <a data-value="ok-paralysis" class="modal-close waves-effect waves-green btn-flat">OK</a>
       </div>
     </div>
@@ -170,7 +170,7 @@
         </p>
       </div>
       <div class="modal-footer">
-        <a class="modal-close waves-effect waves-green btn-flat">Cancel</a>
+        <!-- <a class="modal-close waves-effect waves-green btn-flat">Cancel</a> -->
         <a data-value="ok-confusion" class="modal-close waves-effect waves-green btn-flat">OK</a>
       </div>
     </div>
@@ -179,13 +179,13 @@
     <!-- description poison -->
     <div id="modal-poison-description" class="modal modal-fixed-footer">
       <div class="modal-content">
-        <h4>どく状態</h4>
-        <!-- <h5>説明</h5> -->
+        <h4>どく</h4>
+        <h5>説明</h5>
         <p>
           どくマーカーをカードにのせる。
           ポケモンチェックのたびに「10」のダメカンを1個のせる。
         </p>
-        <!-- <h5>行動</h5> -->
+        <h5>行動</h5>
         <p>
           <table>
             <tr>
@@ -198,7 +198,7 @@
             </tr>
           </table>
         </p>
-        <!-- <h5>回復</h5> -->
+        <h5>回復</h5>
         <p>
           <ul class="browser-default style-ul">
             <li>ベンチに戻る、進化する。</li>
@@ -215,14 +215,14 @@
     <!-- description burn -->
     <div id="modal-burn-description" class="modal modal-fixed-footer">
       <div class="modal-content">
-        <h4>やけど状態</h4>
-        <!-- <h5>説明</h5> -->
+        <h4>やけど</h4>
+        <h5>説明</h5>
         <p>
           やけどマーカーをカードにのせる。
           ポケモンチェックのたびに「10」のダメカンを2個のせる。
           そのあと、コインを投げて、オモテならそのポケモンは「やけど」から回復する。
         </p>
-        <!-- <h5>行動</h5> -->
+        <h5>行動</h5>
         <p>
           <table>
             <tr>
@@ -235,7 +235,7 @@
             </tr>
           </table>
         </p>
-        <!-- <h5>回復</h5> -->
+        <h5>回復</h5>
         <p>
           <ul class="browser-default style-ul">
             <li>ベンチに戻る、進化する。</li>
@@ -253,13 +253,13 @@
     <!-- description sleep -->
     <div id="modal-sleep-description" class="modal modal-fixed-footer">
       <div class="modal-content">
-        <h4>ねむり状態</h4>
-        <!-- <h5>説明</h5> -->
+        <h4>ねむり</h4>
+        <h5>説明</h5>
         <p>
           カードを横にする。※左右どちらでもかまわない。
           「ねむり」のポケモンは、自分の番、ワザと「にげる」が使えなくなる。
         </p>
-        <!-- <h5>行動</h5> -->
+        <h5>行動</h5>
         <p>
           <table>
             <tr>
@@ -272,7 +272,7 @@
             </tr>
           </table>
         </p>
-        <!-- <h5>回復</h5> -->
+        <h5>回復</h5>
         <p>
           <ul class="browser-default style-ul">
             <li>ベンチに戻る、進化する。</li>
@@ -290,13 +290,13 @@
     <!-- description paralysis -->
     <div id="modal-paralysis-description" class="modal modal-fixed-footer">
       <div class="modal-content">
-        <h4>マヒ状態</h4>
-        <!-- <h5>説明</h5> -->
+        <h4>マヒ</h4>
+        <h5>説明</h5>
         <p>
           カードを横にする。※左右どちらでもかまわない。
           「マヒ」になったポケモンは、そのあとの自分の番、ワザと「にげる」が使えなくなる。
         </p>
-        <!-- <h5>行動</h5> -->
+        <h5>行動</h5>
         <p>
           <table>
             <tr>
@@ -309,7 +309,7 @@
             </tr>
           </table>
         </p>
-        <!-- <h5>回復</h5> -->
+        <h5>回復</h5>
         <p>
           <ul class="browser-default style-ul">
             <li>ベンチに戻る、進化する。</li>
@@ -327,23 +327,27 @@
     <!-- description confusion -->
     <div id="modal-confusion-description" class="modal modal-fixed-footer">
       <div class="modal-content">
-        <h4>こんらん状態</h4>
-        <!-- <h5>説明</h5> -->
+        <h4>こんらん</h4>
+        <h5>説明</h5>
         <p>
           カードを上下さかさまにする。
           使うワザを決めたら、持ち主はコインを投げる。
           オモテならそのワザを使えるが、ウラだとワザは失敗して、ワザを使ったポケモン自身に「10」のダメカンを3個のせる。
         </p>
-        <!-- <h5>行動</h5> -->
+        <h5>行動</h5>
         <p>
           <table>
+            <tr>
+              <th>ワザ</th>
+              <td>コインがオモテなら使える</td>
+            </tr>
             <tr>
               <th>にげる</th>
               <td>できない</td>
             </tr>
           </table>
         </p>
-        <!-- <h5>回復</h5> -->
+        <h5>回復</h5>
         <p>
           <ul class="browser-default style-ul">
             <li>ベンチに戻る、進化する。</li>

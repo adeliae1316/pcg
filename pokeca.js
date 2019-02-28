@@ -103,7 +103,6 @@ window.addEventListener("DOMContentLoaded", function() {
         switch (modal_element.id) {
           case "modal-poison":
           case "modal-burn":
-            console.log(status_num);
             changeStatus(status_array[status_num]);
             break;
           case "modal-sleep":
@@ -205,7 +204,6 @@ window.addEventListener("DOMContentLoaded", function() {
     element.addEventListener("mouseup", function() {
       clearTimeout(timeout);
     }, false);
-
   }
 
   function addEventsListener(element, events, func) {
