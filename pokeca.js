@@ -1,4 +1,5 @@
 window.addEventListener("DOMContentLoaded", function() {
+
   let prev = 0,
     times = 0,
     count_num = 1;
@@ -54,6 +55,9 @@ window.addEventListener("DOMContentLoaded", function() {
     clickOK(elems[i]);
   }
 
+  judgeLongClick(count_area, function() {
+    console.log("Long Tap!!!!");
+  });
 
   function fieldCards() {}
 
@@ -67,7 +71,7 @@ window.addEventListener("DOMContentLoaded", function() {
   }
 
   function clickStatus(element, status_element) {
-    let clicked = [false];
+    let clicked = [0];
     element.addEventListener("click", function() {
       if (!status_element.is_status) {
         const conflict_status = (status_sleep.is_status || status_paralysis.is_status || status_confusion.is_status) && !(status_element == status_poison || status_element == status_burn);
@@ -80,12 +84,14 @@ window.addEventListener("DOMContentLoaded", function() {
           instances[status_num].open();
         }
       } else if (status_element.is_status) {
-        judgeDoubleClick(clicked, element, function() {
+        judgeMultipleClicks(clicked, element, function() {
+          console.log("single-click");
+          instances[getStatusNum(element) + 8].open();
+        }, function() {
           console.log("double-click");
           setDamage(elems_field[0], getDamageOfStatus(element));
         }, function() {
-          console.log("single-click");
-          instances[getStatusNum(element) + 8].open();
+          console.log("triple-click");
         });
       }
     }, false);
@@ -177,23 +183,63 @@ window.addEventListener("DOMContentLoaded", function() {
     }, false);
   }
 
-  function judgeDoubleClick(clicked, element, dfunc, sfunc) {
-    // 呼び出す前にclicked = [false]を宣言して、addEventListener("click", function(){ judgeDoubleClick(clicked, element, ...) }, false);
-    // clickをintで持ってswitchでtripleクリック判定できる？
-    if (clicked[0]) {
-      // write your function when double click
-      dfunc();
-      clicked[0] = false;
-      return;
+  function judgeLongClick(element, func) {
+    let timeout;
+    element.addEventListener("touchstart", function(e) {
+      e.preventDefault();
+      console.log("do touchstart");
+      timeout = setTimeout(function() {
+        func();
+      }, 500);
+    }, false);
+    element.addEventListener("touchend", function() {
+      clearTimeout(timeout);
+    }, false);
+
+    element.addEventListener("mousedown", function() {
+      console.log("do mousedown");
+      timeout = setTimeout(function() {
+        func();
+      }, 500);
+    }, false);
+    element.addEventListener("mouseup", function() {
+      clearTimeout(timeout);
+    }, false);
+
+  }
+
+  function addEventsListener(element, events, func) {
+    for (let i = 0; i < events.length; i++) {
+      element.addEventListener(events[i], func, false);
     }
-    clicked[0] = true;
-    setTimeout(function() {
-      if (clicked[0]) {
-        // write your function when double click
-        sfunc();
-      }
-      clicked[0] = false;
-    }, 300);
+  }
+
+  function judgeMultipleClicks(clicked, element, sfunc, dfunc, tfunc) {
+    // 呼び出す前にclicked = [0]を宣言して、addEventListener("click", function(){ judgeMultipleClicks(clicked, element, ...) }, false);
+    // setTimeoutを1回押された時にだけ呼んで、タイムアウトする前までに押された回数
+    clicked[0] += 1;
+    if (clicked[0] == 1 && clicked[0] != 100) {
+      setTimeout(function() {
+        switch (clicked[0]) {
+          case 1:
+            sfunc();
+            break;
+          case 2:
+            dfunc();
+            break;
+          case 3:
+            tfunc();
+            break;
+          case 4:
+            console.log("quadruple-click");
+            break;
+          case 5:
+            console.log("quintuple-click");
+            break;
+        }
+        clicked[0] = 0;
+      }, 300);
+    }
   }
 
   function getModalNum(element) {
