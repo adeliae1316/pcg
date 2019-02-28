@@ -66,12 +66,38 @@ window.addEventListener("DOMContentLoaded", function() {
     }, false);
   }
 
+  function clickStatus(element, status_element) {
+    let clicked = [false];
+    element.addEventListener("click", function() {
+      if (!status_element.is_status) {
+        const conflict_status = (status_sleep.is_status || status_paralysis.is_status || status_confusion.is_status) && !(status_element == status_poison || status_element == status_burn);
+        const non_conflict_status = (status_element == status_poison || status_element == status_burn) || (!status_element.is_status);
+        if (conflict_status) {
+          status_num = getStatusNum(element);
+          instances[status_num + 3].open();
+        } else if (non_conflict_status) {
+          status_num = getStatusNum(element);
+          instances[status_num].open();
+        }
+      } else if (status_element.is_status) {
+        judgeDoubleClick(clicked, element, function() {
+          console.log("double-click");
+          setDamage(elems_field[0], getDamageOfStatus(element));
+        }, function() {
+          console.log("single-click");
+          instances[getStatusNum(element) + 8].open();
+        });
+      }
+    }, false);
+  }
+
   function clickOK(modal_element) {
-    modal_element.addEventListener("click", function() {
+    modal_element.lastElementChild.lastElementChild.addEventListener("click", function() {
       if (modal_element.lastElementChild.lastElementChild.dataset["value"] == ok_array[getModalNum(modal_element)]) {
         switch (modal_element.id) {
           case "modal-poison":
           case "modal-burn":
+            console.log(status_num);
             changeStatus(status_array[status_num]);
             break;
           case "modal-sleep":
@@ -92,37 +118,10 @@ window.addEventListener("DOMContentLoaded", function() {
     }, false);
   }
 
-  function clickStatus(element, status_element) {
-    let clicked = [false];
-    element.addEventListener("click", function() {
-      if (!status_element.is_status) {
-        const conflict_status = (status_sleep.is_status || status_paralysis.is_status || status_confusion.is_status) && !(status_element == status_poison || status_element == status_burn);
-        const non_conflict_status = (status_element == status_poison || status_element == status_burn) || (!status_element.is_status);
-        if (conflict_status) {
-          status_num = getStatusNum(element);
-          instances[status_num + 3].open();
-        } else if (non_conflict_status) {
-          status_num = getStatusNum(element);
-          instances[status_num].open();
-        }
-      } else if (status_element.is_status) {
-        judgeDoubleClick(clicked, element, function() {
-          console.log("double-click");
-          setDamage(elems_field[0], getDamageOfStatus(element));
-        }, function() {
-          console.log("single-click");
-          instances[getStatusNum(element)+8].open();
-        });
-      }
-    }, false);
-  }
-
-
-
-  function setDamage(element_field, damage) {
+  function setDamage(field_element, damage) {
     if (damage != null) {
-      let tmp = parseInt(element_field.innerText);
-      element_field.innerText = tmp + damage;
+      let tmp = parseInt(field_element.innerText);
+      field_element.innerText = tmp + damage;
     }
   }
 
@@ -134,21 +133,22 @@ window.addEventListener("DOMContentLoaded", function() {
         return 20;
       case "confusion":
         return 30;
+      default:
+        return 0;
     }
   }
 
   function changeStatus(status_element) {
     const imagetag = status_element.element.lastElementChild;
-    console.log(imagetag.className);
     if (!status_element.is_status && status_element.element.className.indexOf("disable-gray") != -1) {
       let temp = status_element.element.className.replace("disable-gray", "");
       status_element.element.className = temp;
-      temp = status_element.element.lastElementChild.className.replace("disable-gray", "");
-      status_element.element.lastElementChild.className = temp;
+      temp = imagetag.className.replace("disable-gray", "");
+      imagetag.className = temp;
       status_element.is_status = true;
     } else if (status_element.is_status) {
       status_element.element.className += "disable-gray";
-      status_element.element.lastElementChild.className += "disable-gray";
+      imagetag.className += "disable-gray";
       status_element.is_status = false;
     }
   }
@@ -179,6 +179,7 @@ window.addEventListener("DOMContentLoaded", function() {
 
   function judgeDoubleClick(clicked, element, dfunc, sfunc) {
     // 呼び出す前にclicked = [false]を宣言して、addEventListener("click", function(){ judgeDoubleClick(clicked, element, ...) }, false);
+    // clickをintで持ってswitchでtripleクリック判定できる？
     if (clicked[0]) {
       // write your function when double click
       dfunc();
