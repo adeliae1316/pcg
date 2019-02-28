@@ -31,9 +31,13 @@ window.addEventListener("DOMContentLoaded", function() {
   let status_array = [status_poison, status_burn, status_sleep, status_paralysis, status_confusion];
   let ok_array = ["ok-poison", "ok-burn", "ok-sleep", "ok-paralysis", "ok-confusion"];
 
+  let options = {
+    "preventScrolling": false
+  };
+
   // Init Modals of Materialize
   let elems = document.querySelectorAll('.modal');
-  let instances = M.Modal.init(elems);
+  let instances = M.Modal.init(elems, options);
 
   let elems_times = document.querySelectorAll(".times");
   let elems_field = document.querySelectorAll(".field");
@@ -99,6 +103,7 @@ window.addEventListener("DOMContentLoaded", function() {
 
   function clickOK(modal_element) {
     modal_element.lastElementChild.lastElementChild.addEventListener("click", function() {
+      status_num = getModalNum(modal_element);
       switch (modal_element.id) {
         case "modal-poison":
         case "modal-burn":
@@ -123,6 +128,7 @@ window.addEventListener("DOMContentLoaded", function() {
         case "modal-paralysis-description":
         case "modal-confusion-description":
           changeStatus(status_array[status_num])
+          console.log("clicked: " + modal_element.id + ", recovery: " + status_array[status_num].element.id);
           break;
       }
     }, false);
@@ -248,17 +254,22 @@ window.addEventListener("DOMContentLoaded", function() {
   function getModalNum(element) {
     switch (element.id) {
       case "modal-poison":
+      case "modal-poison-description":
         return 0;
       case "modal-burn":
+      case "modal-burn-description":
         return 1;
       case "modal-sleep":
       case "modal-sleep-interference":
+      case "modal-sleep-description":
         return 2;
       case "modal-paralysis":
       case "modal-paralysis-interference":
+      case "modal-paralysis-description":
         return 3;
       case "modal-confusion":
       case "modal-confusion-interference":
+      case "modal-confusion-description":
         return 4;
     }
   }
