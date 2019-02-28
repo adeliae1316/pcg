@@ -99,26 +99,31 @@ window.addEventListener("DOMContentLoaded", function() {
 
   function clickOK(modal_element) {
     modal_element.lastElementChild.lastElementChild.addEventListener("click", function() {
-      if (modal_element.lastElementChild.lastElementChild.dataset["value"] == ok_array[getModalNum(modal_element)]) {
-        switch (modal_element.id) {
-          case "modal-poison":
-          case "modal-burn":
-            changeStatus(status_array[status_num]);
-            break;
-          case "modal-sleep":
-          case "modal-paralysis":
-          case "modal-confusion":
-            changeStatus(status_array[status_num]);
-            before_num = status_num;
-            break;
-          case "modal-paralysis-interference":
-          case "modal-sleep-interference":
-          case "modal-confusion-interference":
-            changeStatus(status_array[before_num]);
-            changeStatus(status_array[status_num]);
-            before_num = status_num;
-            break;
-        }
+      switch (modal_element.id) {
+        case "modal-poison":
+        case "modal-burn":
+          changeStatus(status_array[status_num]);
+          break;
+        case "modal-sleep":
+        case "modal-paralysis":
+        case "modal-confusion":
+          changeStatus(status_array[status_num]);
+          before_num = status_num;
+          break;
+        case "modal-paralysis-interference":
+        case "modal-sleep-interference":
+        case "modal-confusion-interference":
+          changeStatus(status_array[before_num]);
+          changeStatus(status_array[status_num]);
+          before_num = status_num;
+          break;
+        case "modal-poison-description":
+        case "modal-burn-description":
+        case "modal-sleep-description":
+        case "modal-paralysis-description":
+        case "modal-confusion-description":
+          changeStatus(status_array[status_num])
+          break;
       }
     }, false);
   }
