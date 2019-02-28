@@ -47,7 +47,7 @@ li.status-li {}
 
 ul.style-ul {
   list-style-type: square;
-  padding-left: 1em;
+  padding-left: 0.5em;
 }
 
 div.card {
