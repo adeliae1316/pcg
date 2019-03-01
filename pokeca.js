@@ -32,14 +32,14 @@ window.addEventListener("DOMContentLoaded", function() {
   let ok_array = ["ok-poison", "ok-burn", "ok-sleep", "ok-paralysis", "ok-confusion"];
 
   let options = {
-    "preventScrolling": false
+    "preventScrolling": true
   };
 
   // Init Modals of Materialize
   let elems = document.querySelectorAll('.modal');
   let instances = M.Modal.init(elems, options);
 
-  let elems_times = document.querySelectorAll(".times");
+  let elems_times = document.querySelectorAll(".item-ctimes");
   let elems_field = document.querySelectorAll(".field");
 
   let status_num = 0,
@@ -59,11 +59,9 @@ window.addEventListener("DOMContentLoaded", function() {
     clickOK(elems[i]);
   }
 
-  judgeLongClick(count_area, function() {
-    console.log("Long Tap!!!!");
-  });
-
-  function fieldCards() {}
+  // judgeLongClick(count_area, function() {
+  //   console.log("Long Tap!!!!");
+  // });
 
   // Init count_area and coins_screen
   function clearCountArea() {
@@ -128,7 +126,6 @@ window.addEventListener("DOMContentLoaded", function() {
         case "modal-paralysis-description":
         case "modal-confusion-description":
           changeStatus(status_array[status_num])
-          console.log("clicked: " + modal_element.id + ", recovery: " + status_array[status_num].element.id);
           break;
       }
     }, false);
@@ -155,16 +152,12 @@ window.addEventListener("DOMContentLoaded", function() {
   }
 
   function changeStatus(status_element) {
-    const imagetag = status_element.element.lastElementChild;
     if (!status_element.is_status && status_element.element.className.indexOf("disable-gray") != -1) {
       let temp = status_element.element.className.replace("disable-gray", "");
       status_element.element.className = temp;
-      temp = imagetag.className.replace("disable-gray", "");
-      imagetag.className = temp;
       status_element.is_status = true;
     } else if (status_element.is_status) {
       status_element.element.className += "disable-gray";
-      imagetag.className += "disable-gray";
       status_element.is_status = false;
     }
   }
@@ -239,12 +232,12 @@ window.addEventListener("DOMContentLoaded", function() {
           case 3:
             tfunc();
             break;
-          case 4:
-            console.log("quadruple-click");
-            break;
-          case 5:
-            console.log("quintuple-click");
-            break;
+          // case 4:
+          //   console.log("quadruple-click");
+          //   break;
+          // case 5:
+          //   console.log("quintuple-click");
+          //   break;
         }
         clicked[0] = 0;
       }, 300);

@@ -8,124 +8,109 @@ html {
 }
 
 body {
-  width: 100vw;
+  width: 100%;
 }
 
 h1 {
-  margin: 3vw 5vw 3vw;
-  width: 90vw;
-  font-size: 10vw;
+  margin: 1.4rem 1.4rem;
+  font-size: 3.2rem;
 }
 
 h2 {
-  margin: 3vw 5vw 3vw;
-  width: 90vw;
-  font-size: 8vw;
+  margin: 1.0rem 1.4rem;
+  font-size: 2.6rem;
 }
 
-p {
-  /* font-size: 1em; */
-}
-
-ul.table-ul {
-  display: table;
-}
-
-li.table-li {
-  display: table-cell;
-}
-
-span#count {}
-
-ul#coin-times {
-  width: 92vw;
-  margin: 1vw 4vw;
-}
-
-ul.status-pb-ul {
-  width: 92vw;
-  margin: 0vw 2vw;
-}
-
-ul.status-spc-ul {
-  width: 96vw;
-  margin: 0vw 2vw;
-}
-
-li.status-li {}
-
+/* For Modals */
 ul.style-ul {
   list-style-type: square;
   padding-left: 0.5em;
 }
 
-div.status-div {
-  text-align: center;
-  margin: 2vw 4vw;
+/* For Field */
+div.container-bfield {
+  display: flex;
+  justify-content: space-around;
 }
 
-div.poison-burn {
-  width: 40vw;
-  height: 28vw;
+div.container-bench {
+  display: flex;
+  justify-content: space-around;
 }
 
-div.status-etc {
-  width: 24vw;
-  height: 24vw;
+div.field {
+  margin: 0.5rem 1.5rem;
+  font-size: 2.4rem;
 }
 
-img.status-img {
-  margin: 6vw 0vw;
-  height: 16vw;
+/* For Times of throwing-coin */
+div.container-ctimes {
+  display: flex;
+  justify-content: space-around;
+  margin: 1.5rem;
 }
 
-button.times {
-  width: 16vw;
+button.item-ctimes {
+  width: 4.5rem;
 }
 
 div#coins-screen {
-  margin: 2vw 5vw 2vw;
-  width: 90vw;
-  height: 12vw;
-  font-size: 14vw;
+  margin: 0rem 1.5rem;
+  height: 4.2rem;
+  font-size: 4.2rem;
 }
 
-ul#field-ul {
-  margin: 2vw 5vw;
-  width: 90vw
+/* For Status div-tag */
+div.container-status {
+  display: flex;
+  justify-content: space-around;
+  margin: 1.5rem;
 }
 
-li.field {
-  text-align: center;
-  width: 8vw;
-  font-size: 8vw;
+div.item-pb {
+  width: 12rem;
+  height: 8rem;
+  box-shadow: 3px 3px 3px rgb(230, 230, 230);
+  background-size: auto 61.8%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+div.item-spc {
+  width: 7.5rem;
+  height: 7.5rem;
+  box-shadow: 3px 3px 3px rgb(230, 230, 230);
+  background-size: auto 61.8%;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 div#poison {
+  background-image: url("./img/medical_doku.png");
   background-color: rgb(255, 200, 255);
 }
 
 div#burn {
+  background-image: url("./img/honoo_hi_fire.png");
   background-color: rgb(255, 200, 200);
 }
 
 div#sleep {
+  background-image: url("./img/shirokuma_sleep.png");
   background-color: rgb(200, 240, 255);
 }
 
 div#paralysis {
+  background-image: url("./img/kanden_gaikotsu.png");
   background-color: rgb(200, 255, 170);
 }
 
 div#confusion {
+  background-image: url("./img/sick_noiroze_woman.png");
   background-color: rgb(255, 255, 200);
 }
 
 div.disable-gray {
-  background-color: rgb(200, 200, 200) !important;
-}
-
-img.disable-gray {
   -webkit-filter: grayscale(100%);
   -moz-filter: grayscale(100%);
   -ms-filter: grayscale(100%);
