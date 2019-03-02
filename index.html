@@ -19,48 +19,49 @@
   <header></header>
   <article>
     <h1>POKECA FIELD</h1>
-    <section>
-      <h2>Field</h2>
-      <div id="field" class="container-bfield">
-        <div class="field">0</div>
-        <div id="gx-marker" class="field">GX</div>
-      </div>
-      <h2>Bench</h2>
-      <div id="bench" class="container-bench">
-        <div class="field">0</div>
-        <div class="field">0</div>
-        <div class="field">0</div>
-        <div class="field">0</div>
-        <div class="field">0</div>
-      </div>
-    </section>
-    <section>
-      <h2>Status</h2>
-      <div class="container-status">
-        <div id="poison" class="item-pb disable-gray" data-target="modal-poison"></div>
-        <div id="burn" class="item-pb disable-gray" data-target="modal-burn"></div>
-      </div>
-      <div class="container-status">
-        <div id="sleep" class="item-spc disable-gray" data-target="modal-sleep"></div>
-        <div id="paralysis" class="item-spc disable-gray" data-target="modal-paralysis"></div>
-        <div id="confusion" class="item-spc disable-gray" data-target="modal-confusion"></div>
-      </div>
-    </section>
-    <section>
-      <h2>Coins: <span id="count">0</span></h2>
-      <div class="container-ctimes">
-        <button type="button" value="1" class="waves-effect waves-light btn-large item-ctimes">1</button>
-        <button type="button" value="2" class="waves-effect waves-light btn-large item-ctimes">2</button>
-        <button type="button" value="3" class="waves-effect waves-light btn-large item-ctimes">3</button>
-        <button type="button" value="4" class="waves-effect waves-light btn-large item-ctimes">4</button>
-        <button type="button" value="5" class="waves-effect waves-light btn-large item-ctimes">5</button>
-      </div>
-      <div id="coins-screen" class="material-icons"></div>
-    </section>
-
-    <section>
-      <h2>Test Area</h2>
-    </section>
+    <div class="cssgrid">
+      <section>
+        <h2>Field</h2>
+        <div id="field" class="container-bfield">
+          <div class="field">0</div>
+          <div id="gx-marker" class="field">GX</div>
+        </div>
+        <h2>Bench</h2>
+        <div id="bench" class="container-bench">
+          <div class="field">0</div>
+          <div class="field">0</div>
+          <div class="field">0</div>
+          <div class="field">0</div>
+          <div class="field">0</div>
+        </div>
+      </section>
+      <section>
+        <h2>Status</h2>
+        <div class="container-status">
+          <div id="poison" class="item-pb disable-gray" data-target="modal-poison"></div>
+          <div id="burn" class="item-pb disable-gray" data-target="modal-burn"></div>
+        </div>
+        <div class="container-status">
+          <div id="sleep" class="item-spc disable-gray" data-target="modal-sleep"></div>
+          <div id="paralysis" class="item-spc disable-gray" data-target="modal-paralysis"></div>
+          <div id="confusion" class="item-spc disable-gray" data-target="modal-confusion"></div>
+        </div>
+      </section>
+      <section>
+        <h2>Coins: <span id="count">0</span></h2>
+        <div class="container-ctimes">
+          <button type="button" value="1" class="waves-effect waves-light btn-large item-ctimes">1</button>
+          <button type="button" value="2" class="waves-effect waves-light btn-large item-ctimes">2</button>
+          <button type="button" value="3" class="waves-effect waves-light btn-large item-ctimes">3</button>
+          <button type="button" value="4" class="waves-effect waves-light btn-large item-ctimes">4</button>
+          <button type="button" value="5" class="waves-effect waves-light btn-large item-ctimes">5</button>
+        </div>
+        <div id="coins-screen" class="material-icons"></div>
+      </section>
+      <!-- <section>
+        <h2>Test Area</h2>
+      </section> -->
+    </div>
     <section>
       <!-- <h2>Modals</h2> -->
       <!-- modal for status -->
@@ -325,7 +326,6 @@
           <a data-value="recovery-confusion" class="modal-close waves-effect waves-green btn-flat">回復</a>
         </div>
       </div>
-
     </section>
   </article>
   <footer></footer>

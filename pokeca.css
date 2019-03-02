@@ -1,121 +1,263 @@
-/* For Common Setting */
+@media screen and (max-width:420px) {
 
-html {
-  font-family: 'Ubuntu', sans-serif;
-  touch-action: manipulation;
-  -moz-user-select: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+  /* For Common Setting */
+  html {
+    font-family: 'Ubuntu', sans-serif;
+    touch-action: manipulation;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  h1 {
+    margin: 3.0vw 3.0vw;
+    font-size: 14.0vw;
+  }
+
+  h2 {
+    margin: 2.0vw 2.5vw;
+    font-size: 12vw;
+  }
+
+  /* For Modals */
+  ul.style-ul {
+    list-style-type: square;
+    padding-left: 1.0rem;
+  }
+
+  /* For Field */
+  div.container-bfield {
+    display: flex;
+    justify-content: space-around;
+    margin: 0 3vw;
+  }
+
+  div.container-bench {
+    display: flex;
+    justify-content: space-around;
+    margin: 0 3vw;
+  }
+
+  div.field {
+    width: 24vw;
+    margin: 1vw 2vw;
+    font-size: 12vw;
+    text-align: right;
+  }
+
+  div#gx-marker {
+    text-align: center;
+  }
+
+  /* For Status div-tag */
+  div.container-status {
+    display: flex;
+    justify-content: space-around;
+    margin: 2.5vw;
+  }
+
+  div.item-pb {
+    width: 45vw;
+    height: 30vw;
+    box-shadow: 3px 3px 3px rgb(230, 230, 230);
+    background-size: auto 61.8%;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  div.item-spc {
+    width: 28vw;
+    height: 28vw;
+    box-shadow: 1vw 1vw 1vw rgb(230, 230, 230);
+    background-size: auto 61.8%;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  div#poison {
+    background-image: url("./img/medical_doku.png");
+    background-color: rgb(255, 200, 255);
+  }
+
+  div#burn {
+    background-image: url("./img/honoo_hi_fire.png");
+    background-color: rgb(255, 200, 200);
+  }
+
+  div#sleep {
+    background-image: url("./img/shirokuma_sleep.png");
+    background-color: rgb(200, 240, 255);
+  }
+
+  div#paralysis {
+    background-image: url("./img/kanden_gaikotsu.png");
+    background-color: rgb(200, 255, 170);
+  }
+
+  div#confusion {
+    background-image: url("./img/sick_noiroze_woman.png");
+    background-color: rgb(255, 255, 200);
+  }
+
+  div.disable-gray {
+    -webkit-filter: grayscale(100%);
+    -moz-filter: grayscale(100%);
+    -ms-filter: grayscale(100%);
+    -o-filter: grayscale(100%);
+    filter: grayscale(100%);
+  }
+
+  /* For Times of throwing-coin */
+  div.container-ctimes {
+    display: flex;
+    justify-content: space-around;
+    margin: 2.5vw;
+  }
+
+  button.item-ctimes {
+    width: 16vw;
+    height: 16vw;
+    padding: 0;
+  }
+
+  div#coins-screen {
+    margin: 1vw 2.5vw;
+    width: 95vw;
+    height: 14vw;
+    font-size: 14vw;
+    text-align: center;
+  }
 }
 
-body {
-  width: 100%;
-}
+@media screen and (min-width:421px) and (max-width:767px) {
+  html {
+    font-family: 'Ubuntu', sans-serif;
+    touch-action: manipulation;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    width: 420px;
+    margin: 0 auto;
+  }
 
-h1 {
-  margin: 1.4rem 1.4rem;
-  font-size: 3.2rem;
-}
+  h1 {
+    margin: calc(3px*420/100) calc(3px*420/100);
+    font-size: calc(14px*420/100);
+  }
 
-h2 {
-  margin: 1.0rem 1.4rem;
-  font-size: 2.6rem;
-}
+  h2 {
+    margin: calc(2.0px*420/100) calc(2.5px*420/100);
+    font-size: calc(12.0px*420/100);
+  }
 
-/* For Modals */
-ul.style-ul {
-  list-style-type: square;
-  padding-left: 0.5em;
-}
+  /* For Modals */
+  ul.style-ul {
+    list-style-type: square;
+    padding-left: 1.0rem;
+  }
 
-/* For Field */
-div.container-bfield {
-  display: flex;
-  justify-content: space-around;
-}
+  /* For Field */
+  div.container-bfield {
+    display: flex;
+    justify-content: space-around;
+    margin: 0px calc(2.5px*420/100);
+  }
 
-div.container-bench {
-  display: flex;
-  justify-content: space-around;
-}
+  div.container-bench {
+    display: flex;
+    justify-content: space-around;
+    margin: 0px calc(2.5px*420/100);
+  }
 
-div.field {
-  margin: 0.5rem 1.5rem;
-  font-size: 2.4rem;
-}
+  div.field {
+    width: calc(24.0px*420/100);
+    margin: calc(1.0px*420/100) calc(1.0px*420/100);
+    font-size: calc(12.0px*420/100);
+    text-align: right;
+  }
 
-/* For Times of throwing-coin */
-div.container-ctimes {
-  display: flex;
-  justify-content: space-around;
-  margin: 1.5rem;
-}
+  div#gx-marker {
+    text-align: center;
+  }
 
-button.item-ctimes {
-  width: 4.5rem;
-}
+  /* For Status div-tag */
+  div.container-status {
+    display: flex;
+    justify-content: space-around;
+    margin: calc(2.5px*420/100);
+  }
 
-div#coins-screen {
-  margin: 0rem 1.5rem;
-  height: 4.2rem;
-  font-size: 4.2rem;
-}
+  div.item-pb {
+    width: calc(45.0px*420/100);
+    height: calc(30.0px*420/100);
+    box-shadow: 3px 3px 3px rgb(230, 230, 230);
+    background-size: auto 61.8%;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
 
-/* For Status div-tag */
-div.container-status {
-  display: flex;
-  justify-content: space-around;
-  margin: 1.5rem;
-}
+  div.item-spc {
+    width: calc(28.0px*420/100);
+    height: calc(28.0px*420/100);
+    box-shadow: calc(1.0px*420/100) calc(1.0px*420/100) calc(1.0px*420/100) rgb(230, 230, 230);
+    background-size: auto 61.8%;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
 
-div.item-pb {
-  width: 12rem;
-  height: 8rem;
-  box-shadow: 3px 3px 3px rgb(230, 230, 230);
-  background-size: auto 61.8%;
-  background-position: center;
-  background-repeat: no-repeat;
-}
+  div#poison {
+    background-image: url("./img/medical_doku.png");
+    background-color: rgb(255, 200, 255);
+  }
 
-div.item-spc {
-  width: 7.5rem;
-  height: 7.5rem;
-  box-shadow: 3px 3px 3px rgb(230, 230, 230);
-  background-size: auto 61.8%;
-  background-position: center;
-  background-repeat: no-repeat;
-}
+  div#burn {
+    background-image: url("./img/honoo_hi_fire.png");
+    background-color: rgb(255, 200, 200);
+  }
 
-div#poison {
-  background-image: url("./img/medical_doku.png");
-  background-color: rgb(255, 200, 255);
-}
+  div#sleep {
+    background-image: url("./img/shirokuma_sleep.png");
+    background-color: rgb(200, 240, 255);
+  }
 
-div#burn {
-  background-image: url("./img/honoo_hi_fire.png");
-  background-color: rgb(255, 200, 200);
-}
+  div#paralysis {
+    background-image: url("./img/kanden_gaikotsu.png");
+    background-color: rgb(200, 255, 170);
+  }
 
-div#sleep {
-  background-image: url("./img/shirokuma_sleep.png");
-  background-color: rgb(200, 240, 255);
-}
+  div#confusion {
+    background-image: url("./img/sick_noiroze_woman.png");
+    background-color: rgb(255, 255, 200);
+  }
 
-div#paralysis {
-  background-image: url("./img/kanden_gaikotsu.png");
-  background-color: rgb(200, 255, 170);
-}
+  div.disable-gray {
+    -webkit-filter: grayscale(100%);
+    -moz-filter: grayscale(100%);
+    -ms-filter: grayscale(100%);
+    -o-filter: grayscale(100%);
+    filter: grayscale(100%);
+  }
 
-div#confusion {
-  background-image: url("./img/sick_noiroze_woman.png");
-  background-color: rgb(255, 255, 200);
-}
+  /* For Times of throwing-coin */
+  div.container-ctimes {
+    display: flex;
+    justify-content: space-around;
+    margin: calc(2.5px*420/100);
+  }
 
-div.disable-gray {
-  -webkit-filter: grayscale(100%);
-  -moz-filter: grayscale(100%);
-  -ms-filter: grayscale(100%);
-  -o-filter: grayscale(100%);
-  filter: grayscale(100%);
+  button.item-ctimes {
+    width: calc(16.0px*420/100);
+    height: calc(16.0px*420/100);
+    padding: 0;
+  }
+
+  div#coins-screen {
+    margin: calc(1.0px*420/100) calc(2.5px*420/100);
+    width: calc(95.0px*420/100);
+    height: calc(14.0px*420/100);
+    font-size: calc(14.0px*420/100);
+    text-align: center;
+  }
 }
