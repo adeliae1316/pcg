@@ -19,8 +19,8 @@
   <header></header>
   <article>
     <h1>POKECA FIELD</h1>
-    <div class="cssgrid">
-      <section>
+    <div class="container-section">
+      <section id="sec-field" class="sec-item">
         <h2>Field</h2>
         <div id="field" class="container-bfield">
           <div class="field">0</div>
@@ -35,7 +35,7 @@
           <div class="field">0</div>
         </div>
       </section>
-      <section>
+      <section id="sec-status" class="sec-item">
         <h2>Status</h2>
         <div class="container-status">
           <div id="poison" class="item-pb disable-gray" data-target="modal-poison"></div>
@@ -47,7 +47,7 @@
           <div id="confusion" class="item-spc disable-gray" data-target="modal-confusion"></div>
         </div>
       </section>
-      <section>
+      <section id="sec-ctimes" class="sec-item">
         <h2>Coins: <span id="count">0</span></h2>
         <div class="container-ctimes">
           <button type="button" value="1" class="waves-effect waves-light btn-large item-ctimes">1</button>
@@ -58,12 +58,8 @@
         </div>
         <div id="coins-screen" class="material-icons"></div>
       </section>
-      <!-- <section>
-        <h2>Test Area</h2>
-      </section> -->
     </div>
-    <section>
-      <!-- <h2>Modals</h2> -->
+    <div>
       <!-- modal for status -->
       <!-- Poison -->
       <div id="modal-poison" class="modal">
@@ -326,7 +322,7 @@
           <a data-value="recovery-confusion" class="modal-close waves-effect waves-green btn-flat">回復</a>
         </div>
       </div>
-    </section>
+    </div>
   </article>
   <footer></footer>
 </body>

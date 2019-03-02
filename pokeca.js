@@ -282,6 +282,10 @@ window.addEventListener("DOMContentLoaded", function() {
     }
   }
 
+  function innerWidth(){
+    console.log(window.innerWidth + " : " + window.innerHeight);
+  }
+
 
 }, false);
 
