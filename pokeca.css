@@ -143,8 +143,8 @@
   }
 
   h1 {
-    margin: calc(3px*420/100) calc(3px*420/100);
-    font-size: calc(14px*420/100);
+    margin: calc(1.0px*420/100) calc(1.0px*420/100);
+    font-size: calc(14.0px*420/100);
   }
 
   h2 {
