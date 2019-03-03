@@ -16,7 +16,7 @@ https://opensource.org/licenses/mit-license.php
 ```
 
 ## References
-- [Materialize](https://materializecss.com/)
+- [開発者向けのウェブ技術](https://developer.mozilla.org/ja/docs/Web)
 - [Webクリエイターボックス](https://www.webcreatorbox.com/)
 - [日本語対応！CSS Flexboxのチートシートを作ったので配布します](https://www.webcreatorbox.com/tech/css-flexbox-cheat-sheet)
 - [今さら聞けない!? CSSのborder-radiusで様々な角丸に挑戦！](https://www.webcreatorbox.com/tech/border-radius)
