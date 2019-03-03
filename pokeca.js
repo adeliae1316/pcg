@@ -59,6 +59,10 @@ window.addEventListener("DOMContentLoaded", function() {
     clickOK(elems[i]);
   }
 
+  let gxmarker_status = new Status(document.getElementById("gx-marker"));
+
+  gxMarker(gxmarker_status);
+
   // judgeLongClick(count_area, function() {
   //   console.log("Long Tap!!!!");
   // });
@@ -232,12 +236,12 @@ window.addEventListener("DOMContentLoaded", function() {
           case 3:
             tfunc();
             break;
-          // case 4:
-          //   console.log("quadruple-click");
-          //   break;
-          // case 5:
-          //   console.log("quintuple-click");
-          //   break;
+            // case 4:
+            //   console.log("quadruple-click");
+            //   break;
+            // case 5:
+            //   console.log("quintuple-click");
+            //   break;
         }
         clicked[0] = 0;
       }, 300);
@@ -282,10 +286,28 @@ window.addEventListener("DOMContentLoaded", function() {
     }
   }
 
-  function innerWidth(){
-    console.log(window.innerWidth + " : " + window.innerHeight);
-  }
+  function gxMarker(gxmarker_status) {
+    // unuse = false;
+    let clicked = [0];
+    let gxmarker = gxmarker_status.element;
+    gxmarker.addEventListener("click", function() {
+      judgeMultipleClicks(clicked, gxmarker, function() {
+        if (!gxmarker_status.is_status) {
+          gxmarker.className += "disable-gray";
+          gxmarker_status.is_status = true;
+        }
+      }, function() {
+        if (gxmarker_status.is_status) {
+          let temp = gxmarker.className.replace("disable-gray", "");
+          gxmarker.className = temp;
+          gxmarker_status.is_status = false;
+        }
 
+      }, function() {
+        console.log("triple");
+      });
+    }, false);
+  }
 
 }, false);
 

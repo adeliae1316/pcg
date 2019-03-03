@@ -262,7 +262,7 @@
   }
 }
 
-@media (min-width:480px){
+@media (min-width:480px) {
   html {
     font-family: 'Ubuntu', sans-serif;
     touch-action: manipulation;
@@ -286,12 +286,13 @@
   div.container-section {
     display: flex;
     flex-wrap: wrap;
-    width: 100vw;
+    width: 96vw;
+    margin: 2vw;
   }
 
   .sec-item {
-    flex: 1 0 33.3vw;
-    width: 33.3vw;
+    width: 32vw;
+    background-color: rgb(250, 250, 250);
   }
 
   section#sec-field {}
@@ -328,6 +329,11 @@
 
   div#gx-marker {
     text-align: center;
+    margin: 1vw 1.8vw;
+    border-radius: 1vw 2vw 1vw 2vw;
+    background-color: rgb(80, 190, 240);
+    color: rgb(255, 255, 255);
+    font-style: oblique;
   }
 
   /* For Status div-tag */
@@ -394,11 +400,7 @@
   div.container-ctimes {
     display: flex;
     justify-content: space-around;
-    margin: 0.5vw;
-  }
-
-  div#ctimes {
-    margin: 3.0vw 0;
+    margin: 4.0vw 0;
   }
 
   button.item-ctimes {
@@ -409,10 +411,11 @@
   }
 
   div#coins-screen {
-    margin: 4.0vw 0;
-    width: 33vw;
+    margin: 1.0vw 0 3.0vw;
+    width: 32vw;
     height: 5.0vw;
     font-size: 5.0vw;
     text-align: center;
   }
+
 }
