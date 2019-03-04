@@ -67,6 +67,23 @@ window.addEventListener("DOMContentLoaded", function() {
   //   console.log("Long Tap!!!!");
   // });
 
+  for (let i = 0; i < elems_field.length; i++) {
+    createSelectToSetDamage(elems_field[i]);
+  }
+
+  // For creating options of select tag to set damage
+  function createSelectToSetDamage(elem_field) {
+    let select = document.createElement("select");
+    elem_field.appendChild(select);
+    for (let i = 0; i <= 60; i++) {
+      let option = document.createElement("option");
+      select.appendChild(option);
+      let value = -300 + (10 * i);
+      option.value = value;
+      if (value == 0) option.setAttributeNode(document.createAttribute("selected"));
+    }
+  }
+
   // Init count_area and coins_screen
   function clearCountArea() {
     count_area.addEventListener("click", function() {
