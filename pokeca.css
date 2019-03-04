@@ -508,13 +508,13 @@
   }
 
   h1 {
-    margin: 1.0vw 2.5vw;
+    margin: 2.0vw 2.5vw;
     font-size: 4.0vw;
   }
 
   h2 {
     margin: 1.0vw 2.5vw;
-    font-size: 2.5vw;
+    font-size: 3.5vw;
   }
 
   /* For Sections */
@@ -531,6 +531,7 @@
 
   section#sec-field {
     width: 48vw;
+    font-size: 3.5vw;
   }
 
   section#sec-status {
@@ -563,7 +564,6 @@
   div.field {
     width: 24vw;
     margin: 1.0vw;
-    font-size: 2.5vw;
     text-align: right;
   }
 
@@ -572,7 +572,6 @@
     height: 5.0vw;
     margin: 1.0vw;
     padding: 0;
-    font-size: 2.5vw;
     direction: rtl;
     background-color: rgba(255, 255, 255, 0);
     display: block;
@@ -608,8 +607,8 @@
 
   div.item-pb {
     margin: 0.5vw;
-    width: 9.0vw;
-    height: 6.0vw;
+    width: 16.0vw;
+    height: 10.0vw;
     box-shadow: 1.0vw 1.0vw 1.0vw rgb(230, 230, 230);
     background-size: auto 61.8%;
     background-position: center;
@@ -618,8 +617,8 @@
 
   div.item-spc {
     margin: 0.5vw;
-    width: 9.0vw;
-    height: 6.0vw;
+    width: 12.0vw;
+    height: 10.0vw;
     box-shadow: 1.0vw 1.0vw 1.0vw rgb(230, 230, 230);
     background-size: auto 61.8%;
     background-position: center;
@@ -660,25 +659,31 @@
   }
 
   /* For Times of throwing-coin */
+  .display-flex {
+    display: flex;
+    margin: 3.0vw 5.0vw;
+  }
+
   div.container-ctimes {
     display: flex;
     justify-content: space-around;
-    margin: 2.0vw 10.0vw;
   }
 
   button.item-ctimes {
     padding: 0;
+    margin: 0 1.0vw;
     width: 6.0vw;
     height: 4.0vw;
-    line-height: 2.0vw;
+    line-height: 4.0vw;
     font-size: 2.0vw;
   }
 
   div#coins-screen {
-    margin: 0 0 1.0vw;
+    margin: 0 2.0vw;
     width: 96vw;
     height: 4.0vw;
-    font-size: 5.0vw;
+    line-height: 4.0vw;
+    font-size: 4.0vw;
     text-align: center;
   }
 }
