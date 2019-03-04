@@ -68,8 +68,7 @@ window.addEventListener("DOMContentLoaded", function() {
 
   function openGithub(){
     judgeLongClick(document.getElementById("logo"), function(){
-      window.open("https://github.com/adeliae1316/pcg-site", "_blank");
-      // location.href = "https://github.com/adeliae1316/pcg-site";
+      window.open("https://github.com/adeliae1316/pcg-site/blob/master/README.md", "_blank");
     });
   }
 
@@ -205,7 +204,7 @@ window.addEventListener("DOMContentLoaded", function() {
       }
       let out_str = "";
       for (let i = 0; i < times; i++) {
-        let sides = Math.floor((Math.random() * 1000) % 2);
+        let sides = Math.floor((Math.random() * 1000)) % 2;
         if (sides == 0) {
           out_str += " panorama_fish_eye ";
         } else {
