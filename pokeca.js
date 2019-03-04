@@ -2,7 +2,8 @@ window.addEventListener("DOMContentLoaded", function() {
 
   let prev = 0,
     times = 0,
-    count_num = 1;
+    count_num = 1,
+    clicks = 0;
   let count_area = document.getElementById("count");
   let coins_screen = document.getElementById("coins-screen");
 
@@ -107,15 +108,14 @@ window.addEventListener("DOMContentLoaded", function() {
           instances[status_num].open();
         }
       } else if (status_element.is_status) {
-        judgeMultipleClicks(clicked, element, function() {
-          console.log("single-click");
-          instances[getStatusNum(element) + 8].open();
-        }, function() {
-          console.log("double-click");
-          setDamage(elems_field[0], getDamageOfStatus(element));
-        }, function() {
-          console.log("triple-click");
-        });
+        judgeMultipleClicks([
+          function() {
+            instances[getStatusNum(element) + 8].open();
+          },
+          function() {
+            setDamage(elems_field[0], getDamageOfStatus(element));
+          }
+        ]);
       }
     }, false);
   }
@@ -207,7 +207,7 @@ window.addEventListener("DOMContentLoaded", function() {
     }, false);
   }
 
-  function judgeLongClick(element, func) {
+  function judgeLongClick(func) {
     let timeout;
     element.addEventListener("touchstart", function(e) {
       e.preventDefault();
@@ -231,36 +231,18 @@ window.addEventListener("DOMContentLoaded", function() {
     }, false);
   }
 
-  function addEventsListener(element, events, func) {
-    for (let i = 0; i < events.length; i++) {
-      element.addEventListener(events[i], func, false);
-    }
-  }
-
-  function judgeMultipleClicks(clicked, element, sfunc, dfunc, tfunc) {
-    // 呼び出す前にclicked = [0]を宣言して、addEventListener("click", function(){ judgeMultipleClicks(clicked, element, ...) }, false);
+  function judgeMultipleClicks(functions) {
+    // グローバルでclicksを宣言して、addEventListener("click", function(){ judgeMultipleClicks(functions) }, false);
     // setTimeoutを1回押された時にだけ呼んで、タイムアウトする前までに押された回数
-    clicked[0] += 1;
-    if (clicked[0] == 1 && clicked[0] != 100) {
+    clicks += 1;
+    if (clicks == 1) {
       setTimeout(function() {
-        switch (clicked[0]) {
-          case 1:
-            sfunc();
-            break;
-          case 2:
-            dfunc();
-            break;
-          case 3:
-            tfunc();
-            break;
-            // case 4:
-            //   console.log("quadruple-click");
-            //   break;
-            // case 5:
-            //   console.log("quintuple-click");
-            //   break;
+        if (functions.length >= clicks) {
+          functions[clicks - 1]();
+        } else {
+          console.log(clicks + "times click!!");
         }
-        clicked[0] = 0;
+        clicks = 0;
       }, 300);
     }
   }
@@ -308,21 +290,21 @@ window.addEventListener("DOMContentLoaded", function() {
     let clicked = [0];
     let gxmarker = gxmarker_status.element;
     gxmarker.addEventListener("click", function() {
-      judgeMultipleClicks(clicked, gxmarker, function() {
-        if (!gxmarker_status.is_status) {
-          gxmarker.className += "disable-gray";
-          gxmarker_status.is_status = true;
+      judgeMultipleClicks([
+        function() {
+          if (!gxmarker_status.is_status) {
+            gxmarker.className += "disable-gray";
+            gxmarker_status.is_status = true;
+          }
+        },
+        function() {
+          if (gxmarker_status.is_status) {
+            let temp = gxmarker.className.replace("disable-gray", "");
+            gxmarker.className = temp;
+            gxmarker_status.is_status = false;
+          }
         }
-      }, function() {
-        if (gxmarker_status.is_status) {
-          let temp = gxmarker.className.replace("disable-gray", "");
-          gxmarker.className = temp;
-          gxmarker_status.is_status = false;
-        }
-
-      }, function() {
-        console.log("triple");
-      });
+      ]);
     }, false);
   }
 
