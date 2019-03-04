@@ -504,15 +504,39 @@
   }
 
   div.field {
-    width: 24vw;
+  width: 24vw;
+  margin: 1.0vw;
+  font-size: 2.5vw;
+  text-align: right;
+}
+
+  select.field {
+    width: 7.0vw;
+    height: 5.0vw;
     margin: 1.0vw;
+    padding: 0;
     font-size: 2.5vw;
-    text-align: right;
+    direction: rtl;
+    background-color: rgba(255, 255, 255, 0);
+    display: block;
+    outline: 0;
+    border: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+  }
+
+  div#bfield {
+    width: 7.0vw;
   }
 
   div#gx-marker {
     text-align: center;
-    margin: 1.0vw 8.0vw;
+    width: 12.0vw;
+    height: 5.0vw;
+    line-height: 5.0vw;
+    font-size: 2.5vw;
+    margin: 1.0vw;
     border-radius: 1vw 2vw 1vw 2vw;
     background-color: rgb(80, 190, 240);
     color: rgb(255, 255, 255);

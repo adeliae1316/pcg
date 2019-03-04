@@ -69,19 +69,18 @@ window.addEventListener("DOMContentLoaded", function() {
   // });
 
   for (let i = 0; i < elems_field.length; i++) {
-    createSelectToSetDamage(elems_field[i]);
+    createOptionToSetDamage(elems_field[i]);
   }
 
   // For creating options of select tag to set damage
-  function createSelectToSetDamage(elem_field) {
-    let select = document.createElement("select");
-    elem_field.appendChild(select);
-    for (let i = 0; i <= 60; i++) {
+  function createOptionToSetDamage(select) {
+    for (let i = 0; i <= 30; i++) {
       let option = document.createElement("option");
       select.appendChild(option);
-      let value = -300 + (10 * i);
+      let value = (10 * i);
       option.value = value;
-      if (value == 0) option.setAttributeNode(document.createAttribute("selected"));
+      option.innerText = value;
+      // if (value == 0) option.setAttributeNode(document.createAttribute("selected"));
     }
   }
 
@@ -95,7 +94,6 @@ window.addEventListener("DOMContentLoaded", function() {
   }
 
   function clickStatus(element, status_element) {
-    let clicked = [0];
     element.addEventListener("click", function() {
       if (!status_element.is_status) {
         const conflict_status = (status_sleep.is_status || status_paralysis.is_status || status_confusion.is_status) && !(status_element == status_poison || status_element == status_burn);
@@ -113,7 +111,7 @@ window.addEventListener("DOMContentLoaded", function() {
             instances[getStatusNum(element) + 8].open();
           },
           function() {
-            setDamage(elems_field[0], getDamageOfStatus(element));
+            setDamageToSelect(elems_field[0], getDamageOfStatus(element));
           }
         ]);
       }
@@ -152,10 +150,18 @@ window.addEventListener("DOMContentLoaded", function() {
     }, false);
   }
 
-  function setDamage(field_element, damage) {
+  function setDamage(elem_field, damage) {
     if (damage != null) {
-      let tmp = parseInt(field_element.innerText);
-      field_element.innerText = tmp + damage;
+      let tmp = parseInt(elem_field.innerText);
+      elem_field.innerText = tmp + damage;
+    }
+  }
+
+  function setDamageToSelect(elem_field, damage) {
+    if (damage != null) {
+      let options = elem_field.querySelectorAll('option');
+      let tmp = (parseInt(damage)+parseInt(elem_field.value))/10;
+      elem_field.selectedIndex = tmp;
     }
   }
 
@@ -207,7 +213,7 @@ window.addEventListener("DOMContentLoaded", function() {
     }, false);
   }
 
-  function judgeLongClick(func) {
+  function judgeLongClick(element, func) {
     let timeout;
     element.addEventListener("touchstart", function(e) {
       e.preventDefault();
@@ -287,7 +293,6 @@ window.addEventListener("DOMContentLoaded", function() {
 
   function gxMarker(gxmarker_status) {
     // unuse = false;
-    let clicked = [0];
     let gxmarker = gxmarker_status.element;
     gxmarker.addEventListener("click", function() {
       judgeMultipleClicks([
