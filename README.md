@@ -5,6 +5,19 @@ https://adeliae1316.github.io/pcg-site/
 - practice html5, js and css.
 - provide easy way to throw coins for pcg.
 
+## How to Use
+- `Field`または`Bench`の数値を、クリックまたはタップすると、`0~300`のSelect-Optionが出るので、ダメカンに利用してください。
+- `GX`と書かれたマーカをクリックまたはタップすると、グレー色のフィルタが掛かります。GXマーカとして利用してください。ダブルクリックまたはダブルタップで元に戻ります。
+- `Status`の画像をクリックまたはタップすると、Modalが出てその状態へ変更するか問われます。`OK`を押すとグレー色のフィルタが外れて現在の状態が判断できます。`ねむり` `マヒ` `こんらん` 状態は重ならないので、いずれかの状態に変更したのちに、他の状態へ変更しようとすると変更するか問われます。
+- すでになっている状態をクリックまたはタップすると、Modalが出て、その状態の説明閲覧と回復がおこなえます。
+- `どく` `やけど` `こんらん` 状態は、ポケモンチェックの際にダメカンを載せることがあります。ダブルクリックまたはダブルタップすると、固定ダメージが`Field`の数値に加算されます。
+- `Coins`に配置されている数値の書かれたボタンをクリックまたはタップすると、2種類のサークルによって、コイントスの結果を表示します。`Coins: `の横に示される数値は、同じコイントスを何度おこなったかを示しています。他のコイントスをおこなうか、数値をクリックまたはタップするとリセットされます。
+- タイトルの`POKECA FIELD`を長押しすると、いま読んでいるGitHubのREADME.mdを新しいタブで開きます。
+
+## Technical Matter
+- コイントスに用いられる数値は[Math.floor((Math.random() * 1000)) % 2](https://github.com/adeliae1316/pcg-site/blob/7f01890d60aad596b21c1f17cbc4ad88e387c8bb/pokeca.js#L208)と定義されています。Math.randomは 0.0 <= x < 1.0 の値を返します。サンプル数を増やすため、その数値を1000倍します。また、Math.randomは小数を返すので、Math.floorで最大の整数を返します。こうして求められたランダムな数値の2による剰余を求めます。おそらく偏りなくコイントスの結果が出力できると考えています。
+- js詳しくないので詳細はわからないのですが、`click`イベントと`dblclick`イベントを同じスクリプト内で判定できないらしいです。single clickイベントが先に発火してしまう所為みたいです。なので[この関数](https://github.com/adeliae1316/pcg-site/blob/7f01890d60aad596b21c1f17cbc4ad88e387c8bb/pokeca.js#L244)を実装・利用しています。1度クリックまたはタップされた時から300ms秒待ち、300ms秒以内に何度クリックまたはタップがあったかを判定しています。
+
 ## Materialize
 - This site uses CSS Framework: [Materialize](https://materializecss.com/).
   - GitHub is [here](https://github.com/Dogfalo/materialize).
