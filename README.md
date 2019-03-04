@@ -16,7 +16,7 @@ https://adeliae1316.github.io/pcg-site/
 
 ## Technical Matter
 - コイントスに用いられる数値は[Math.floor((Math.random() * 1000)) % 2](https://github.com/adeliae1316/pcg-site/blob/7f01890d60aad596b21c1f17cbc4ad88e387c8bb/pokeca.js#L208)と定義されています。Math.randomは 0.0 <= x < 1.0 の値を返します。サンプル数を増やすため、その数値を1000倍します。また、Math.randomは小数を返すので、Math.floorで最大の整数を返します。こうして求められたランダムな数値の2による剰余を求めます。おそらく偏りなくコイントスの結果が出力できると考えています。
-- js詳しくないので詳細はわからないのですが、`click`イベントと`dblclick`イベントを同じスクリプト内で判定できないらしいです。single clickイベントが先に発火してしまう所為みたいです。なので[この関数](https://github.com/adeliae1316/pcg-site/blob/7f01890d60aad596b21c1f17cbc4ad88e387c8bb/pokeca.js#L244)を実装・利用しています。1度クリックまたはタップされた時から300ms秒待ち、300ms秒以内に何度クリックまたはタップがあったかを判定しています。
+- js詳しくないので詳細はわからないのですが、`click`イベントと`dblclick`イベントを同じスクリプト内で判定できないらしいです。single clickイベントが先に発火してしまう所為みたいです。なので[この関数](https://github.com/adeliae1316/pcg-site/blob/7f01890d60aad596b21c1f17cbc4ad88e387c8bb/pokeca.js#L244)を実装・利用しています。1度クリックまたはタップされた時から300ms待ち、300ms以内に何度クリックまたはタップがあったかを判定しています。
 - [Media Queries](https://developer.mozilla.org/ja/docs/Web/CSS/Media_Queries/Using_media_queries)を利用して、画面幅でレイアウト4種類用意し、調整しています。開発のほとんどをGoogle Chrome(72.0.3626.109（Official Build）（64 ビット）)を用いて行なったため、FirefoxやSafari、EdgeやIEなどではレイアウトが崩れる可能性があります。
 
 ## Materialize
