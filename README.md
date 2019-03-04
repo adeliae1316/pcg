@@ -21,3 +21,4 @@ https://opensource.org/licenses/mit-license.php
 - [日本語対応！CSS Flexboxのチートシートを作ったので配布します](https://www.webcreatorbox.com/tech/css-flexbox-cheat-sheet)
 - [レスポンシブの基本、メディアクエリの書き方](https://sole-color-blog.com/blog/71/)
 - [CSS GridとFlexboxを使ってメディアクエリなしでレスポンシブにレイアウトする方法](https://parashuto.com/rriver/development/responsive-layout-with-css-grid-and-flexbox)
+- [HTMLSelectElement.selectedIndex](https://developer.mozilla.org/en-US/docs/Web/API/HTMLSelectElement/selectedIndex)

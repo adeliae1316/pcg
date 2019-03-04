@@ -80,7 +80,6 @@ window.addEventListener("DOMContentLoaded", function() {
       let value = (10 * i);
       option.value = value;
       option.innerText = value;
-      // if (value == 0) option.setAttributeNode(document.createAttribute("selected"));
     }
   }
 
@@ -159,8 +158,8 @@ window.addEventListener("DOMContentLoaded", function() {
 
   function setDamageToSelect(elem_field, damage) {
     if (damage != null) {
-      let options = elem_field.querySelectorAll('option');
-      let tmp = (parseInt(damage)+parseInt(elem_field.value))/10;
+      let tmp = (parseInt(damage) + parseInt(elem_field.value)) / 10;
+      if (tmp > 30) tmp = 0;
       elem_field.selectedIndex = tmp;
     }
   }
