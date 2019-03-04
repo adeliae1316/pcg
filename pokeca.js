@@ -64,9 +64,14 @@ window.addEventListener("DOMContentLoaded", function() {
 
   gxMarker(gxmarker_status);
 
-  // judgeLongClick(count_area, function() {
-  //   console.log("Long Tap!!!!");
-  // });
+  openGithub();
+
+  function openGithub(){
+    judgeLongClick(document.getElementById("logo"), function(){
+      window.open("https://github.com/adeliae1316/pcg-site", "_blank");
+      // location.href = "https://github.com/adeliae1316/pcg-site";
+    });
+  }
 
   for (let i = 0; i < elems_field.length; i++) {
     createOptionToSetDamage(elems_field[i]);
