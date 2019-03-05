@@ -66,8 +66,8 @@ window.addEventListener("DOMContentLoaded", function() {
 
   openGithub();
 
-  function openGithub(){
-    judgeLongClick(document.getElementById("logo"), function(){
+  function openGithub() {
+    judgeLongClick(document.getElementById("logo"), function() {
       window.open("https://github.com/adeliae1316/pcg-site/blob/master/README.md", "_blank");
     });
   }
@@ -220,7 +220,6 @@ window.addEventListener("DOMContentLoaded", function() {
     let timeout;
     element.addEventListener("touchstart", function(e) {
       e.preventDefault();
-      console.log("do touchstart");
       timeout = setTimeout(function() {
         func();
       }, 500);
@@ -230,7 +229,6 @@ window.addEventListener("DOMContentLoaded", function() {
     }, false);
 
     element.addEventListener("mousedown", function() {
-      console.log("do mousedown");
       timeout = setTimeout(function() {
         func();
       }, 500);
@@ -246,10 +244,8 @@ window.addEventListener("DOMContentLoaded", function() {
     clicks += 1;
     if (clicks == 1) {
       setTimeout(function() {
-        if (functions.length >= clicks) {
+        if (0 < clicks && clicks <= functions.length) {
           functions[clicks - 1]();
-        } else {
-          console.log(clicks + "times click!!");
         }
         clicks = 0;
       }, 300);
